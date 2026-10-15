@@ -1,0 +1,26 @@
+/* DR Automóviles · identidad visual
+   Fuente: logo entregado por el responsable (captura del perfil de Instagram, 15/10/2026).
+   Paleta: negro #060607 · rojo #ee1c22 (texto sobre negro: #ff4a4a · sobre claro: #b3000c) · plata #d9dbdd · gris damero #2a2a2c.
+   Tipografía: Exo 2 (cursiva, títulos) + Inter (texto). Se carga después de los estilos de cada página. */
+:root{--dr-red:#ee1c22;--dr-red-hi:#ff4a4a;--dr-red-deep:#b3000c;--dr-ink:#060607;--dr-silver:#d9dbdd;--dr-check:#2a2a2c}
+::selection{background:var(--dr-red);color:#fff}
+
+/* Logo circular sobre negro: sin placa blanca ni recuadro */
+html body .lg-img,html body .lg-ft,html body .lg-404,html body .lg-bk{background:transparent!important;padding:0!important;box-shadow:0 0 0 1.5px rgba(255,255,255,.22)!important;border-radius:50%;width:auto!important;aspect-ratio:1/1;object-fit:contain}
+html body .mark .lg-img{height:48px!important}
+html body .site-header--home .mark .lg-img{height:68px!important}
+html body .lg-ft{height:92px!important;margin:0 0 14px}
+html body .lg-404{height:150px!important;max-width:none!important}
+html body .lg-bk{height:44px!important}
+html body .hz-v71 .hz-brand{background:transparent;border:0;clip-path:none;padding:0;justify-content:flex-start}
+html body .hz-v71 .hz-brand img{width:min(100%,200px);border-radius:50%}
+@media(max-width:980px){html body .mark .lg-img{height:42px!important}html body .site-header--home .mark .lg-img{height:52px!important}}
+
+/* Los énfasis de los títulos siguen la cursiva del logo */
+h1 em,h2 em,h3 em{font-style:italic}
+
+/* Damero de bandera: una sola firma visual (borde inferior del encabezado y borde superior del pie) */
+header:not(.site-header--home):not(.cv-head)::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:7px;background:repeating-conic-gradient(var(--dr-red) 0 25%,var(--dr-check) 0 50%) 0 0/14px 14px;pointer-events:none}
+footer{position:relative}
+footer::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:repeating-conic-gradient(var(--dr-red) 0 25%,var(--dr-check) 0 50%) 0 0/14px 14px;pointer-events:none}
+@media(prefers-reduced-motion:reduce){html body .mark .lg-img{transition:none}}
