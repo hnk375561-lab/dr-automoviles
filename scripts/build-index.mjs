@@ -14,6 +14,13 @@ const A = JSON.parse(read('data/vehicles.json'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const demo = D.publicacion.publicIndexing === false;
 const siteUrl = D.publicacion.siteUrl ? D.publicacion.siteUrl.replace(/\/?$/, '/') : null;
+/* Base ABSOLUTA para las vistas previas (WhatsApp, Facebook, etc. exigen URL absoluta en og:image).
+   Prioridad: siteUrl (producción) > publicacion.previewUrl (demo, URL donde está publicada) > entorno de build
+   (Netlify: URL / DEPLOY_PRIME_URL; GitHub Pages: GITHUB_REPOSITORY). Si no hay ninguna, queda relativa y
+   scripts/build-site.mjs la completa al armar _site/ en Netlify. */
+const envBase = process.env.DEPLOY_PRIME_URL || process.env.URL || (process.env.GITHUB_REPOSITORY ? `https://${process.env.GITHUB_REPOSITORY.split('/')[0].toLowerCase()}.github.io/${process.env.GITHUB_REPOSITORY.split('/')[1]}` : null);
+const ogBaseRaw = siteUrl || D.publicacion.previewUrl || envBase || '';
+const ogBase = ogBaseRaw ? ogBaseRaw.replace(/\/?$/, '/') : '';
 const NAME = D.identity.tradeName;
 const L = D.location;
 const C = D.contact;
@@ -39,9 +46,20 @@ const FONTS = '@font-face{font-family:"Exo 2";font-style:italic;font-weight:100 
 const CSS = read('scripts/estilos.css').trim();
 const DRID = read('css/dr-identidad.css').trim();
 
-const OG = siteUrl ? `<meta property="og:image" content="${siteUrl}images/og-dr.jpg">\n<meta property="og:image:type" content="image/jpeg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="${NAME} · Autos usados en ${L.city}, ${L.province}">\n<meta name="twitter:card" content="summary_large_image">\n` : '';
+const ogTags = (p, title, desc) => `<meta property="og:site_name" content="${esc(NAME)}">
+${ogBase ? `<meta property="og:url" content="${ogBase}${p}">\n` : ''}<meta property="og:image" content="${ogBase}images/og-dr.jpg">
+<meta property="og:image:secure_url" content="${ogBase}images/og-dr.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${NAME} · Autos usados en ${L.city}, ${L.province}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="${ogBase}images/og-dr.jpg">
+`;
 const robotsMeta = demo ? '<meta name="robots" content="noindex, nofollow">\n' : '';
-const canon = (p) => (siteUrl ? `<link rel="canonical" href="${siteUrl}${p}">\n<meta property="og:url" content="${siteUrl}${p}">\n` : '');
+const canon = (p) => (siteUrl ? `<link rel="canonical" href="${siteUrl}${p}">\n` : '');
 
 function page({ title, desc, body, file, withFonts = true, extraHead = '' }) {
   return `<!DOCTYPE html>
@@ -56,7 +74,7 @@ ${robotsMeta}<title>${esc(title)}</title>
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:locale" content="es_AR">
-${OG}${canon(file === 'index.html' ? '' : file)}${withFonts ? '<link rel="manifest" href="site.webmanifest">\n<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">\n<link rel="apple-touch-icon" href="images/icon-180.png">\n<link rel="preload" href="fonts/exo-2-latin-italic.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="preload" href="fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}<style>
+${ogTags(file === 'index.html' ? '' : file, title, desc)}${canon(file === 'index.html' ? '' : file)}${withFonts ? '<link rel="manifest" href="site.webmanifest">\n<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">\n<link rel="apple-touch-icon" href="images/icon-180.png">\n<link rel="preload" href="fonts/exo-2-latin-italic.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="preload" href="fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}<style>
 ${withFonts ? FONTS : ''}${CSS}${withFonts ? '' : '\n' + DRID}
 </style>
 ${withFonts ? '<link rel="stylesheet" href="css/dr-identidad.css">\n' : ''}${extraHead}</head>
@@ -542,8 +560,9 @@ ${robotsMeta}<title>Coordiná tu visita · ${esc(NAME)}</title>
 <meta name="theme-color" content="#060607">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coordiná tu visita · ${esc(NAME)}">
+<meta property="og:description" content="Elegí un día y una franja y armá la consulta para ir a ver un auto. Es una consulta, no un turno.">
 <meta property="og:locale" content="es_AR">
-${OG}${canon('reserva.html')}<link rel="manifest" href="site.webmanifest">
+${ogTags('reserva.html', `Coordiná tu visita · ${NAME}`, 'Elegí un día y una franja y armá la consulta para ir a ver un auto. Es una consulta, no un turno.')}${canon('reserva.html')}<link rel="manifest" href="site.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
 <link rel="apple-touch-icon" href="images/icon-180.png">
 <link rel="stylesheet" href="css/reserva.css"><link rel="stylesheet" href="css/motion.css">

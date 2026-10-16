@@ -13,9 +13,17 @@ const whole = ['css', 'js'];   // se copian completas
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out, { recursive: true });
 let n = 0;
+// URL absoluta para las vistas previas (og:image). En Netlify sale sola del entorno de build.
+const envBase = (process.env.DEPLOY_PRIME_URL || process.env.URL || '').replace(/\/?$/, '/');
 for (const f of files) {
   if (!fs.existsSync(path.join(root, f))) { console.error(`Falta ${f}. ¿Corriste npm run build?`); process.exit(1); }
-  fs.copyFileSync(path.join(root, f), path.join(out, f)); n++;
+  if (f.endsWith('.html') && envBase !== '/') {
+    // completa las metas OG que quedaron relativas (build sin previewUrl/siteUrl)
+    let h = fs.readFileSync(path.join(root, f), 'utf8');
+    h = h.replace(/(<meta (?:property="og:image(?::secure_url)?"|name="twitter:image") content=")images\//g, `$1${envBase}images/`);
+    fs.writeFileSync(path.join(out, f), h);
+  } else fs.copyFileSync(path.join(root, f), path.join(out, f));
+  n++;
 }
 for (const f of optional) if (fs.existsSync(path.join(root, f))) { fs.copyFileSync(path.join(root, f), path.join(out, f)); n++; }
 for (const d of dirs) {
