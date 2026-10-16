@@ -70,3 +70,12 @@
     if (window.innerWidth > 980) close();
   }, { passive: true });
 })();
+
+/* Menú fijo: transparente sobre el hero y sólido al scrollear */
+(function () {
+  var h = document.querySelector('header.site-header--home'); if (!h) return;
+  var t = 0;
+  function f() { t = 0; h.classList.toggle('is-scrolled', (window.scrollY || document.documentElement.scrollTop) > 24); }
+  window.addEventListener('scroll', function () { if (!t) t = requestAnimationFrame(f); }, { passive: true });
+  f();
+})();

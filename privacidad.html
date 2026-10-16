@@ -2061,6 +2061,28 @@ html body .dr-v71 .dr-addr .btn{flex:1 1 auto}
 @media(min-width:981px) and (max-width:1199px){
   html body header.site-header--home .hc{display:none}
 }
+
+/* ===== Logo en tarjetas de unidades: sin placa blanca, más grande y notorio ===== */
+html body .inventory-section .car::before,
+html body #unidades .cars .car::before{
+  background:url("images/logo-sm.png") center/contain no-repeat!important;
+  background-color:transparent!important;
+  padding:0!important;
+  border:0!important;
+  opacity:1!important;
+  width:84px!important;
+  height:84px!important;
+  top:8px!important;
+  right:10px!important;
+  left:auto!important;
+  z-index:3!important;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.55));
+  pointer-events:none;
+}
+@media(max-width:560px){
+  html body .inventory-section .car::before,
+  html body #unidades .cars .car::before{width:68px!important;height:68px!important}
+}
 </style>
 <link rel="stylesheet" href="css/dr-identidad.css">
 </head>
@@ -2085,6 +2107,6 @@ html body .dr-v71 .dr-addr .btn{flex:1 1 auto}
 <div class="ft"><div class="ft-m"><img class="lg-ft" src="images/logo-sm.png" width="256" height="256" alt=""><p class="ft-b">DR Automóviles</p><p>Don Segundo Sombra 1130, Paso del Rey, Buenos Aires</p></div>
 <div><p class="ft-k">Contacto</p><p><a href="tel:+541167425978">011 6742-5978</a></p><p><a href="https://wa.me/5491167425978?text=Hola!%20Quiero%20consultar%20por%20las%20unidades%20disponibles." target="_blank" rel="noopener noreferrer">WhatsApp 11 6742-5978</a></p></div>
 <div><p class="ft-k">Redes</p><p><a href="https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/" target="_blank" rel="noopener noreferrer">Facebook</a></p><p><a href="https://www.instagram.com/dr.automoviles/" target="_blank" rel="noopener noreferrer">Instagram</a></p><p><a href="https://www.tiktok.com/@dr.automoviles" target="_blank" rel="noopener noreferrer">TikTok</a></p></div></div>
-<p class="ft-c">© 2026 DR Automóviles</p><p class="demo-note" data-demo-note>Demo ilustrativa construida a partir de información pública. Datos y disponibilidad sujetos a confirmación por DR Automóviles. No es el sitio oficial. Datos pendientes de confirmación.</p><p><a href="privacidad.html">Privacidad y avisos</a></p></div></footer>
+<p class="ft-c">© 2026 DR Automóviles</p><p class="demo-note" data-demo-note>Demo ilustrativa. Consultá disponibilidad y precios con DR Automóviles. No es el sitio oficial.</p><p><a href="privacidad.html">Privacidad y avisos</a></p></div></footer>
 </body>
 </html>

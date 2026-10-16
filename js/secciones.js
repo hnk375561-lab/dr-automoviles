@@ -541,7 +541,7 @@
         if (esA(a)) badge(td, 'Más nuevo'); gana(td, esA(a));
       }, function (a) { return a.anio; });
       fila('Kilómetros', function (td, a) {
-        td.appendChild(el('strong', a.km != null ? fmt(a.km) + ' km' : 'No publicado', 'big' + (a.km != null ? '' : ' nd')));
+        td.appendChild(el('strong', a.km != null ? fmt(a.km) + ' km' : 'Consultar', 'big' + (a.km != null ? '' : ' nd')));
         if (esK(a)) badge(td, 'Menos km');
         barra(td, a.km, maxK, esK(a)); gana(td, esK(a));
       }, function (a) { return a.km; });
@@ -567,7 +567,7 @@
       t.appendChild(tb);
       var sc = el('div', null, 'cmp-sc'); sc.appendChild(t); dlg.appendChild(sc);
       var f = sel.map(function (a) { return a.precio && a.precio.fecha; }).filter(Boolean);
-      dlg.appendChild(el('p', 'Precios y kilometrajes tal como figuran en cada ficha pública' + (f.length ? ' (relevados el ' + fecha(f[0]) + ')' : '') + '. Pueden haber cambiado: consultalos antes de ir.', 'src cmp-ft'));
+      dlg.appendChild(el('p', 'Precios y kilometrajes' + (f.length ? ' al ' + fecha(f[0]) : '') + '. Consultá disponibilidad actualizada por WhatsApp.', 'src cmp-ft'));
       document.documentElement.classList.add('has-dlg');
       if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute('open', '');
       x.focus();
@@ -646,7 +646,7 @@
       var mb = el('p', a.marca, 'fi-b'); if (a.vendida) mb.appendChild(el('span', 'Vendida', 'fi-v')); info.appendChild(mb);
       var h = el('h2', a.modeloTxt); h.id = 'fi-ttl'; info.appendChild(h);
       info.appendChild(el('p', a.precio ? peso(a) : 'Consultar precio', 'fi-pr'));
-      if (a.precio && a.precio.fecha) info.appendChild(el('p', 'Precio publicado el ' + fecha(a.precio.fecha) + '; puede haber cambiado.', 'fi-n'));
+      if (a.precio && a.precio.fecha) info.appendChild(el('p', 'Precio al ' + fecha(a.precio.fecha) + '.', 'fi-n'));
       var dl = el('dl', null, 'fi-d');
       function dato(k, v, sw) {
         if (v == null || v === '') return;
@@ -655,7 +655,7 @@
         dd.appendChild(document.createTextNode(String(v)));
         d.appendChild(el('dt', k)); d.appendChild(dd); dl.appendChild(d);
       }
-      dato('Año', a.anio); dato('Kilómetros', a.km != null ? fmt(a.km) + ' km' : 'No publicado'); dato('Caja', a.transmision); dato('Combustible', a.combustible);
+      dato('Año', a.anio); dato('Kilómetros', a.km != null ? fmt(a.km) + ' km' : 'Consultar'); dato('Caja', a.transmision); dato('Combustible', a.combustible);
       dato('Color', a.color, a.sw); dato('Cilindrada', a.cilindrada); dato('Versión', a.version); dato('Carrocería', a.carroceria);
       if (a.publicado) dato('Publicada', fecha(a.publicado));
       info.appendChild(dl);
@@ -688,8 +688,39 @@
       info.appendChild(ac2);
 
       var pie = el('div', null, 'fi-p');
-      pie.appendChild(el('p', 'Precio, kilometraje y disponibilidad pueden haber cambiado: consultalos antes de ir.', 'fi-n'));
+      pie.appendChild(el('p', 'Consultá precio y disponibilidad actualizados por WhatsApp.', 'fi-n'));
       info.appendChild(pie);
+
+      /* relleno útil de la columna derecha: unidades parecidas del catálogo (datos reales) + guía para ver un usado */
+      var sim = list.filter(function (c) { return c !== a && c.media && c.media.length; }).map(function (c) {
+        var sc = (c.marca === a.marca ? 4 : 0) + (c.vendida ? 0 : 3) + (c.carroceria && c.carroceria === a.carroceria ? 1 : 0)
+          - (a.anio != null && c.anio != null ? Math.min(Math.abs(c.anio - a.anio), 20) / 10 : 1);
+        return { c: c, sc: sc };
+      }).sort(function (x, y) { return y.sc - x.sc; }).slice(0, 3);
+      if (sim.length) {
+        var sb = el('section', null, 'fi-sim'); sb.setAttribute('aria-label', 'Otras unidades');
+        sb.appendChild(el('p', 'Otras unidades que pueden interesarte', 'fi-s-k'));
+        var sg = el('div', null, 'fi-sim-g');
+        sim.forEach(function (o) {
+          var c = o.c, b = el('button', null, 'fi-sim-c'); b.type = 'button';
+          var im = el('img'); im.src = c.media[0].src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; b.appendChild(im);
+          var tx = el('span', null, 'fi-sim-t');
+          tx.appendChild(el('b', c.titulo || c.modeloTxt));
+          tx.appendChild(el('small', (c.anio != null ? c.anio : '') + (c.vendida ? ' · Vendida' : (c.combustible ? (c.anio != null ? ' · ' : '') + c.combustible : ''))));
+          b.appendChild(tx);
+          b.addEventListener('click', function () { abrirFicha(list.indexOf(c), fOrigen); });
+          sg.appendChild(b);
+        });
+        sb.appendChild(sg); info.appendChild(sb);
+      }
+      var gu = el('section', null, 'fi-gu'); gu.setAttribute('aria-label', 'Guía para ver un usado');
+      gu.appendChild(el('p', 'Para ver esta unidad con tranquilidad', 'fi-s-k'));
+      var gl = el('ul', null, 'fi-gu-l');
+      ['Pedí ver la documentación: título, cédula y verificación policial.',
+       'Revisá que no registre deudas ni infracciones antes de transferir.',
+       'Probalo en ruta: frenos, dirección, caja y ruidos.',
+       'Consultá por el historial de mantenimiento y los dueños anteriores.'].forEach(function (t) { gl.appendChild(el('li', t)); });
+      gu.appendChild(gl); info.appendChild(gu);
 
       /* panel de marca bajo la foto: logotipo, qué ofrece la agencia y cómo visitarla (no repite lo de la derecha) */
       var pn = el('aside', null, 'fi-s'); pn.setAttribute('aria-label', 'Sobre ' + (ctx.nombre || 'la agencia'));
@@ -716,7 +747,7 @@
       g.appendChild(info);
       fdlg.appendChild(x); fdlg.appendChild(g);
       document.documentElement.classList.add('has-dlg');
-      if (typeof fdlg.showModal === 'function') fdlg.showModal(); else fdlg.setAttribute('open', '');
+      if (fdlg.open) { fdlg.scrollTop = 0; } else if (typeof fdlg.showModal === 'function') fdlg.showModal(); else fdlg.setAttribute('open', '');
       x.focus({ preventScroll: true });
     }
     $$('[data-share]', ul).forEach(function (b) { b.hidden = false; });

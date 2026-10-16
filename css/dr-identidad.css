@@ -46,36 +46,34 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;back
 .car-v,.fi-v{display:inline-block;margin-left:.5rem;padding:.15rem .55rem;border-radius:2px;background:#ee1c22;color:#fff;font:700 .72rem/1.2 "Exo 2",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
 .car--vendida .car-ph img{filter:grayscale(.6) brightness(.85)}
 
-/* ===== Logo en tarjetas de unidades: sin placa blanca, más grande y notorio ===== */
-html body .inventory-section .car::before,
-html body #unidades .cars .car::before{
-  background:url("../images/logo-sm.png") center/contain no-repeat!important;
-  background-color:transparent!important;
-  padding:0!important;
-  border:0!important;
-  opacity:1!important;
-  width:84px!important;
-  height:84px!important;
-  top:8px!important;
-  right:10px!important;
-  left:auto!important;
-  z-index:3!important;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.55));
-  pointer-events:none;
-}
-@media(max-width:560px){
-  html body .inventory-section .car::before,
-  html body #unidades .cars .car::before{width:68px!important;height:68px!important}
-}
-
 /* ===== Barra de menú siempre visible (sticky) al hacer scroll ===== */
 html body header.site-header--home{
   position:fixed!important;
   top:0;left:0;right:0;
   inset:0 0 auto 0;
   z-index:1000!important;
+  background:linear-gradient(180deg,rgba(6,6,7,.72),rgba(6,6,7,0))!important;
+  box-shadow:none;
+  transition:background .25s ease,box-shadow .25s ease;
+}
+html body header.site-header--home.is-scrolled{
   background:linear-gradient(180deg,rgba(6,6,7,.98),rgba(6,6,7,.95))!important;
   box-shadow:0 2px 14px rgba(0,0,0,.45);
 }
 html{scroll-padding-top:110px}
 @media(max-width:980px){html{scroll-padding-top:84px}}
+
+
+/* ===== Ficha de unidad: relleno útil de la columna derecha ===== */
+.fi-sim,.fi-gu{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.fi-sim .fi-s-k,.fi-gu .fi-s-k{margin:0 0 10px}
+.fi-sim-g{display:grid;gap:8px}
+.fi-sim-c{display:flex;align-items:center;gap:12px;width:100%;padding:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#fff;text-align:left;cursor:pointer;font:inherit;transition:border-color .2s,background .2s}
+.fi-sim-c:hover,.fi-sim-c:focus-visible{border-color:var(--dr-red);background:rgba(238,28,34,.08)}
+.fi-sim-c img{flex:none;width:84px;height:58px;object-fit:cover;display:block}
+.fi-sim-t{display:grid;gap:3px;min-width:0}
+.fi-sim-t b{font:italic 400 17px/1.15 "Exo 2",system-ui,sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fi-sim-t small{color:#9e9e9e;font-size:12px}
+.fi-gu-l{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.fi-gu-l li{position:relative;padding-left:24px;color:#d9dbdd;font-size:14px;line-height:1.4}
+.fi-gu-l li::before{content:"";position:absolute;left:3px;top:.45em;width:12px;height:6px;border-left:2px solid var(--dr-red);border-bottom:2px solid var(--dr-red);transform:rotate(-45deg)}
