@@ -1,4 +1,4 @@
-# Horizonte Automotores — sitio web
+ # Horizonte Automotores — sitio web
 
 Sitio estático (HTML + CSS; **sin JavaScript de terceros y sin dependencias para publicar**; JS propio en `index.html` (`js/secciones.js` y `js/mapa.js`) y en `reserva.html` (GSAP servido desde `js/vendor/`)) de Horizonte Automotores, concesionario de Av. Argentina 2021, María Grande, Entre Ríos. Estado actual: **demo no indexable** construida con información pública (incluye el sitio oficial de Grupo Almafuerte, del que forma parte).
 
