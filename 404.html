@@ -2122,6 +2122,14 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;back
 /* Unidad vendida */
 .car-v,.fi-v{display:inline-block;margin-left:.5rem;padding:.15rem .55rem;border-radius:2px;background:#ee1c22;color:#fff;font:700 .72rem/1.2 "Exo 2",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
 .car--vendida .car-ph img{filter:grayscale(.6) brightness(.85)}
+/* Unidad vendida: franja de bandera a cuadros sobre la foto (misma identidad que el bloque "18 años") */
+.car--vendida .car-ph{position:relative}
+.car--vendida .car-ph::after{content:"Unidad vendida";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);box-sizing:border-box;height:clamp(54px,20%,84px);display:flex;align-items:center;justify-content:center;padding:14px 10px;pointer-events:none;
+  font:italic 800 clamp(18px,2.4vw,26px)/1 "Exo 2",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7);
+  background:repeating-conic-gradient(#ee1c22 0 25%,#060607 0 50%) 0 0/16px 16px repeat-x,
+             repeating-conic-gradient(#ee1c22 0 25%,#060607 0 50%) 0 100%/16px 16px repeat-x,
+             linear-gradient(rgba(6,6,7,.84),rgba(6,6,7,.84));
+  box-shadow:0 0 0 1px rgba(238,28,34,.55),0 6px 22px rgba(0,0,0,.55)}
 
 /* ===== Barra de menú siempre visible (sticky) al hacer scroll ===== */
 html body header.site-header--home{
@@ -2142,7 +2150,7 @@ html{scroll-padding-top:110px}
 
 
 /* ===== Ficha de unidad: relleno útil de la columna derecha ===== */
-.fi-sim,.fi-gu{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.fi-sim,.fi-gu{margin-top:18px;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.12)}
 .fi-sim .fi-s-k,.fi-gu .fi-s-k{margin:0 0 10px}
 .fi-sim-g{display:grid;gap:8px}
 .fi-sim-c{display:flex;align-items:center;gap:12px;width:100%;padding:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#fff;text-align:left;cursor:pointer;font:inherit;transition:border-color .2s,background .2s}

@@ -100,6 +100,7 @@ const mediaDe = (a) => (Array.isArray(a.fotos) ? a.fotos : Array.isArray(a.image
 const mediaTag = (a, i) => { const m = mediaDe(a)[0]; return m ? `<figure class="car-ph"><img src="${esc(m.src)}"${m.srcset ? ` srcset="${esc(m.srcset)}"` : ''} sizes="(max-width: 700px) 100vw, 320px" width="${m.width || 900}" height="${m.height || 600}" loading="${i === 0 ? 'eager' : 'lazy'}"${i === 0 ? ' fetchpriority="high"' : ''} decoding="async" alt="${esc(m.alt)}"></figure>` : ''; };
 const IC = {
   wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z"/></svg>',
+  ig: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.4 6.6h.01"/></svg>',
   mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4 7l8 6 8-6"/></svg>',
   tel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
   share: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"/></svg>',
@@ -109,6 +110,7 @@ const quick = (a, i) => {
   const t = esc(a.titulo);
   const items = [
     C.whatsApp ? `<a href="${esc(consultaHref(a))}" ${EXT} aria-label="WhatsApp: ${t}" title="WhatsApp">${IC.wa}<span>WhatsApp</span></a>` : '',
+    C.instagram ? `<a href="${IG}" ${EXT} aria-label="Instagram de ${esc(C.nombre || 'DR Automóviles')}" title="Instagram">${IC.ig}<span>Instagram</span></a>` : '',
     C.email ? `<a href="${esc(mailHref(a))}" aria-label="Correo: ${t}" title="Correo">${IC.mail}<span>Correo</span></a>` : '',
     C.phoneTel ? `<a href="tel:${C.phoneTel}" aria-label="Llamar por ${t}" title="Llamar">${IC.tel}<span>Llamar</span></a>` : '',
     `<button type="button" data-share="${i}" aria-label="Compartir ${t}" title="Compartir" hidden>${IC.share}<span>Compartir</span></button>`,
