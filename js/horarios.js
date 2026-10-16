@@ -1,9 +1,9 @@
-/* Horizonte Automotores · js/horarios.js
+/* DR Automóviles · js/horarios.js
    Sección «Horarios y ubicación»: estado «Abierto ahora / Cerrado ahora» según el horario de data/dealership.json
    (viaja en data-semana), cuenta regresiva en horas, minutos y segundos hasta que abre o cierra, y resaltado de hoy.
    Hora de Argentina (UTC-3, sin horario de verano). Sin red ni cookies.
    Rendimiento: cada segundo solo se reescriben unos pocos textos; el resto (estado, filas) se repinta cuando algo cambia.
-   Expone window.hzEstado() para que otras partes (la ficha) lean el estado. */
+   Expone window.drEstado() para que otras partes (la ficha) lean el estado. */
 (function () {
   'use strict';
   var src = document.querySelector('[data-semana]');
@@ -46,7 +46,7 @@
     }
     return { abierto: false, dia: dia, idx: -1, falta: 0, etiqueta: '', corto: '', titulo: 'Cerrado ahora', detalle: '', txt: 'Cerrado ahora' };
   }
-  window.hzEstado = function () { return estado(); };
+  window.drEstado = function () { return estado(); };
 
   /* nodos (se buscan una sola vez) */
   function todos(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -73,9 +73,9 @@
       N.dias[i].classList.toggle('hoy', on);
     }
     /* franja en curso dentro de la fila de hoy */
-    var rg = todos('.hz-tbl .hz-rg');
+    var rg = todos('.dr-tbl .dr-rg');
     for (i = 0; i < rg.length; i++) {
-      var fila = rg[i].closest('tr'), pos = Array.prototype.indexOf.call(fila.querySelectorAll('.hz-rg'), rg[i]);
+      var fila = rg[i].closest('tr'), pos = Array.prototype.indexOf.call(fila.querySelectorAll('.dr-rg'), rg[i]);
       rg[i].classList.toggle('is-on', !!(e.abierto && fila.classList.contains('hoy') && pos === e.idx));
     }
   }

@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════════════════════════════
-   HORIZONTE AUTOMOTORES · CAPA DE MOVIMIENTO  (js/motion.js)
+   DR AUTOMÓVILES · CAPA DE MOVIMIENTO  (js/motion.js)
    GSAP = motor · ScrollTrigger = narrativa · Lenis = inercia del scroll.
 
    Archivo único y autocontenido: solo importa el bundle ya servido en js/vendor/.
@@ -34,7 +34,7 @@
      · Solo transform / opacity / clip-path. Cero lecturas de layout por frame.
      · prefers-reduced-motion: no se oculta ni se mueve nada.
      · Móvil: sin pines, sin efectos de mouse, distancias reducidas; el dedo siempre es nativo.
-     · Contratos con el resto del sitio: eventos horizonte:hero / horizonte:vr, window.horizonteScroll,
+     · Contratos con el resto del sitio: eventos dr:hero / dr:vr, window.drScroll,
        clases html.m / html.mh / html.cm-reduce, <dialog id="dlg">.
    ════════════════════════════════════════════════════════════════════════════════════════ */
 import { gsap, ScrollTrigger, Lenis } from "./vendor/gsap-stack.js";
@@ -258,7 +258,7 @@ function initScroll({ desktop }) {
   if (document.readyState === "complete") requestAnimationFrame(goHash);
   else window.addEventListener("load", () => setTimeout(goHash, 60), { once: true });
 
-  window.horizonteScroll = { to, lenis };
+  window.drScroll = { to, lenis };
   return {
     lenis, inertia,
     dispose() {
@@ -268,7 +268,7 @@ function initScroll({ desktop }) {
       ScrollTrigger.removeEventListener("refresh", onRefresh);
       inertia.destroy();
       lenis.destroy();
-      if (window.horizonteScroll?.lenis === lenis) delete window.horizonteScroll;
+      if (window.drScroll?.lenis === lenis) delete window.drScroll;
     }
   };
 }
@@ -306,7 +306,7 @@ function initNavigation() {
 }
 
 /* ════════════════════════════════════════════════════════════════════════════════════════
-   CAMBIO DE DIAPOSITIVA con cortina de máscara (hero: horizonte:hero · Vender/permutar: horizonte:vr)
+   CAMBIO DE DIAPOSITIVA con cortina de máscara (hero: dr:hero · Vender/permutar: dr:vr)
    El sitio solo alterna .on y avisa por evento; acá vive la coreografía.
    ════════════════════════════════════════════════════════════════════════════════════════ */
 function bindSlides({ event, frame, slide, ctx, axis = "x", extra }) {
@@ -541,7 +541,7 @@ function initSectionBackdrops({ desktop }) {
   qsa("main > section").forEach((section, index) => {
     const src = sources[section.id]; if (!src) return;
     section.style.position = "relative"; section.style.isolation = "isolate";
-    const layer = document.createElement("div"); layer.className = "horizonte-section-backdrop"; layer.setAttribute("aria-hidden", "true");
+    const layer = document.createElement("div"); layer.className = "dr-section-backdrop"; layer.setAttribute("aria-hidden", "true");
     layer.style.cssText = ["position:absolute","inset:0","z-index:0","pointer-events:none","overflow:clip",`background-image:${veil(section.id)}`,"background-size:cover",`background-position:${index % 2 ? "58% 46%" : "42% 54%"}`,"background-repeat:no-repeat","opacity:1!important","filter:none!important","transform:scale(1.04)","transform-origin:50% 50%","will-change:transform"].join(";");
     section.prepend(layer);
     /* La foto se pide solo cuando la sección está cerca del viewport (antes bajaban las 5 al abrir el sitio). */

@@ -1,12 +1,9 @@
-Tipografías utilizadas por Horizonte Automotores. Ambas bajo SIL Open Font License 1.1.
+Tipografías autoalojadas utilizadas por DR Automóviles. Ambas bajo SIL Open Font License 1.1.
 
-Cormorant Garamond — © The Cormorant Project Authors.
-Inter — © The Inter Project Authors.
+Exo 2 — © The Exo 2 Project Authors (https://github.com/googlefonts/Exo-2.0). Licencia completa en LICENSE-exo-2.txt.
+Inter — © The Inter Project Authors (https://github.com/rsms/inter).
 
 SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
-
-PREAMBLE
-The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.
 
 PERMISSION & CONDITIONS
 Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:

@@ -1,4 +1,4 @@
-/* Horizonte Automotores · js/secciones.js
+/* DR Automóviles · js/secciones.js
    1) Catálogo: filtros, orden y comparador de hasta 4 unidades (lee el JSON de #cat-data, que genera scripts/build-index.mjs desde data/vehicles.json).
    2) Formularios «Tu usado» y «Contanos qué auto buscás»: arman un mensaje que la persona copia y envía ella.
       No se transmite ni se guarda nada.
@@ -445,12 +445,12 @@
       dlg.textContent = '';
       dlg.style.setProperty('--n', sel.length);
 
-      /* ----- encabezado: sol sobre el horizonte, título y controles ----- */
+      /* ----- encabezado: bandera, título y controles ----- */
       var hd = el('div', null, 'cmp-hd'), tt = el('div', null, 'cmp-tt');
-      var sun = el('span', null, 'cmp-sun'); sun.setAttribute('aria-hidden', 'true'); sun.innerHTML = '<svg viewBox="0 0 64 36" focusable="false"><path d="M6 30a26 26 0 0 1 52 0"/><path d="M2 30h60"/><path d="M32 4v5M12 11l3 3M52 11l-3 3"/></svg>';
+      var sun = el('span', null, 'cmp-flag'); sun.setAttribute('aria-hidden', 'true'); sun.innerHTML = '<svg viewBox="0 0 64 36" focusable="false"><path d="M8 3v32"/><path d="M8 6h46v20H8z"/><path d="M8 16h46M19.5 6v20M31 6v20M42.5 6v20"/></svg>';
       tt.appendChild(sun);
       var tx = el('div', null, 'cmp-tx');
-      tx.appendChild(el('p', 'Horizonte Automotores', 'cmp-ey'));
+      tx.appendChild(el('p', 'DR Automóviles', 'cmp-ey'));
       var h = el('h2', 'Comparador'); h.id = 'cmp-ttl'; tx.appendChild(h);
       tx.appendChild(el('p', sel.length + ' unidades, lado a lado', 'cmp-sub'));
       tt.appendChild(tx); hd.appendChild(tt);
@@ -695,7 +695,7 @@
       var pn = el('aside', null, 'fi-s'); pn.setAttribute('aria-label', 'Sobre ' + (ctx.nombre || 'la agencia'));
       var plate = el('div', null, 'fi-lg'), lg = el('img'); lg.src = 'images/logo-sm.png'; lg.width = 360; lg.height = 144; lg.alt = ctx.nombre || ''; lg.decoding = 'async';
       plate.appendChild(lg); pn.appendChild(plate);
-      if (ctx.grupo) pn.appendChild(el('p', 'Concesionario del ' + ctx.grupo + (ctx.ciudad ? ' en ' + ctx.ciudad : ''), 'fi-s-t'));
+      if (ctx.ciudad) pn.appendChild(el('p', 'Compra y venta de usados en ' + ctx.ciudad, 'fi-s-t'));
       if (ctx.servicios && ctx.servicios.length) {
         pn.appendChild(el('p', 'Qué ofrece la agencia', 'fi-s-k'));
         var sv = el('ul', null, 'fi-sv');
@@ -705,7 +705,7 @@
       var vis = el('div', null, 'fi-vs');
       vis.appendChild(el('p', 'Visitanos', 'fi-s-k'));
       if (ctx.dir) vis.appendChild(el('p', ctx.dir, 'fi-s-a'));
-      var ev = window.hzEstado ? window.hzEstado() : null, est = ev ? ev.txt : (ctx.horario || '');
+      var ev = window.drEstado ? window.drEstado() : null, est = ev ? ev.txt : (ctx.horario || '');
       if (est) { var le = el('p', est, 'fi-e'); if (ev) le.setAttribute('data-abierto', ev.abierto ? '1' : '0'); vis.appendChild(le); }
       if ($('#horarios')) {
         var hl = enlace('Ver horarios y mapa', '#horarios', 'btn sm', false); hl.addEventListener('click', function () { fdlg.close(); });
@@ -735,7 +735,7 @@
     aplicar(false);
   })();
 
-  /* ---------- 1b) «Cómo comprar»: el sol sale al llegar a la sección (sin JavaScript queda ya salido) ---------- */
+  /* ---------- 1b) «Cómo comprar»: la sección se anima al llegar (sin JavaScript queda ya salido) ---------- */
   (function () {
     var r = $('.ruta');
     if (!r || !('IntersectionObserver' in window) || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
@@ -747,7 +747,7 @@
   })();
 
   /* ---------- 2) formularios que arman un mensaje ----------
-     Tu usado y Tu búsqueda: campos con ejemplos, chips, formato de miles, progreso (el sol sale a medida que completás),
+     Tu usado y Tu búsqueda: campos con ejemplos, chips, formato de miles, progreso (el velocímetro avanza a medida que completás),
      vista previa del mensaje como burbuja, envío por WhatsApp con el texto ya armado y, en la búsqueda,
      coincidencias en vivo con el catálogo publicado (lee #cat-data). Nada se envía ni se guarda desde el sitio. */
   (function () {
@@ -800,7 +800,7 @@
         bub.appendChild(el('span', 'ahora ✓✓', 'cv-b-h'));
       }
 
-      /* ----- progreso: el sol sale a medida que completás ----- */
+      /* ----- progreso: el velocímetro avanza a medida que completás ----- */
       var trk = $$('[data-p]', f);
       function progreso() {
         var n = trk.filter(function (c) { return (c.value || '').trim() !== ''; }).length, p = trk.length ? n / trk.length : 0;

@@ -1,11 +1,11 @@
-/* Horizonte Automotores · js/mapa.js
+/* DR Automóviles · js/mapa.js
    Mapa interactivo de «Horarios y ubicación». Leaflet + OpenStreetMap se cargan al acercarse a la sección
    (o al tocar «Ver mapa»). Mapa siempre claro (sin filtros de color, que eran lo que lo hacía pesado), marcador con el nombre, botón para centrar y, si fallan las teselas, mapa de Google. */
 (function () {
   'use strict';
   var root = document.querySelector('[data-leaflet]');
   if (!root) return;
-  var view = root.querySelector('.hz-map-v');
+  var view = root.querySelector('.dr-map-v');
   var ph = root.querySelector('[data-mapa-ph]');
   var trigger = root.querySelector('[data-mapa-abrir]');
   var status = root.querySelector('.map-m');
@@ -33,17 +33,17 @@
     var f = document.createElement('iframe');
     f.src = 'https://maps.google.com/maps?q=' + lat + ',' + lng + '&hl=es&z=16&output=embed';
     f.title = 'Mapa de ' + nombre; f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.setAttribute('allowfullscreen', '');
-    f.className = 'hz-map-f';
+    f.className = 'dr-map-f';
     view.appendChild(f);
     root.classList.add('is-open');
     if (ph) ph.hidden = true;
   }
 
   function popup() {
-    var w = el('div', null, 'hz-pop');
-    w.appendChild(el('p', nombre, 'hz-pop-t'));
-    if (dir) w.appendChild(el('p', dir, 'hz-pop-a'));
-    if (gmaps) { var a = el('a', 'Cómo llegar', 'hz-pop-l'); a.href = gmaps; a.target = '_blank'; a.rel = 'noopener noreferrer'; w.appendChild(a); }
+    var w = el('div', null, 'dr-pop');
+    w.appendChild(el('p', nombre, 'dr-pop-t'));
+    if (dir) w.appendChild(el('p', dir, 'dr-pop-a'));
+    if (gmaps) { var a = el('a', 'Cómo llegar', 'dr-pop-l'); a.href = gmaps; a.target = '_blank'; a.rel = 'noopener noreferrer'; w.appendChild(a); }
     return w;
   }
 
@@ -74,19 +74,19 @@
     capa();
 
     var icono = L.divIcon({
-      className: 'hz-pin',
-      html: '<span class="hz-pin-r" aria-hidden="true"></span><span class="hz-pin-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16M7 17a5 5 0 0 1 10 0M12 6v2.5M5.6 9.6l1.8 1.8M18.4 9.6l-1.8 1.8"/></svg></span>',
+      className: 'dr-pin',
+      html: '<span class="dr-pin-r" aria-hidden="true"></span><span class="dr-pin-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16M7 17a5 5 0 0 1 10 0M12 6v2.5M5.6 9.6l1.8 1.8M18.4 9.6l-1.8 1.8"/></svg></span>',
       iconSize: [44, 44], iconAnchor: [22, 53], popupAnchor: [0, -50]
     });
     var marca = L.marker([lat, lng], { icon: icono, title: nombre, keyboard: true, alt: nombre }).addTo(mapa);
     marca.bindPopup(popup(), { closeButton: false, minWidth: 210, maxWidth: 260, offset: [0, 0] });
-    marca.bindTooltip(nombre, { permanent: true, direction: 'right', offset: [24, -26], className: 'hz-tt' });
+    marca.bindTooltip(nombre, { permanent: true, direction: 'right', offset: [24, -26], className: 'dr-tt' });
 
     /* botón «Centrar» */
     var Centrar = L.Control.extend({
       options: { position: 'topright' },
       onAdd: function () {
-        var b = L.DomUtil.create('button', 'hz-ctr'); b.type = 'button'; b.textContent = 'Centrar'; b.setAttribute('aria-label', 'Volver a centrar el mapa en ' + nombre);
+        var b = L.DomUtil.create('button', 'dr-ctr'); b.type = 'button'; b.textContent = 'Centrar'; b.setAttribute('aria-label', 'Volver a centrar el mapa en ' + nombre);
         L.DomEvent.disableClickPropagation(b);
         L.DomEvent.on(b, 'click', function () { mapa.setView([lat, lng], 17); });
         return b;
@@ -96,7 +96,7 @@
 
     /* rueda del mouse: se activa al hacer clic en el mapa; en el celular, un toque habilita mover el mapa con un dedo */
     if (movil) {
-      var cand = el('button', 'Tocá para mover el mapa', 'hz-lock'); cand.type = 'button';
+      var cand = el('button', 'Tocá para mover el mapa', 'dr-lock'); cand.type = 'button';
       cand.addEventListener('click', function () { mapa.dragging.enable(); cand.remove(); });
       root.appendChild(cand);
     } else {

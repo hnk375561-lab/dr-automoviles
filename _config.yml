@@ -8,5 +8,4 @@ exclude:
   - package.json
   - netlify.toml
   - plan.md
-  - PERF-CAMBIOS.md
   - LICENSE
