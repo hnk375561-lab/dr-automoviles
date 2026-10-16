@@ -1,124 +1,96 @@
 {
-  "actualizado": "2026-10-12",
+  "actualizado": "2026-10-15",
   "items": [
     {
       "id": "P1",
-      "tema": "Teléfono y WhatsApp oficiales",
+      "tema": "WhatsApp y teléfono vigentes",
       "bloqueante": true,
       "estado": "abierto",
-      "como": "Pedir al dueño cuál es el teléfono fijo y cuál el WhatsApp. Candidatos en data/dealership.json → contact.conflicto. El WhatsApp 3436 10-9949 es el que el sitio oficial de Grupo Almafuerte publica para usados (Nosotros y Contacto); la página Contacto da además el fijo 3434 62-2671 y Nosotros da 3434 61-8388. Cargar contact.phone, phoneTel (+54...), whatsApp (549...) y confirmadoPorDueno=true; npm run build."
+      "como": "11 6742-5978 figura como WhatsApp en TikTok y como teléfono en Google Maps (dos fuentes). Publicado por decisión del responsable. Falta confirmación escrita del dueño y saber si 011 4046-8265 o 011 6221-7508 siguen activos."
     },
     {
       "id": "P2",
-      "tema": "Horario de atención",
+      "tema": "Horarios",
       "bloqueante": false,
-      "estado": "abierto",
-      "como": "Confirmar con el operador cuál es el horario vigente (el del sitio oficial del grupo: L-V 8:30–12:30 y 15:30–19:30, S 8:30–13:00; o el de los directorios) y cargar hours.display. V2 suma GTM: L-V 8:30–12:30 y 16:00–20:00, S 8:30–12:30."
+      "estado": "resuelto",
+      "como": "Resuelto el 15/10/2026 por el responsable: se publica el horario de la ficha de Google Maps (L-J 8:30–18:00, V 8:00–18:30, S 8:00–13:00, domingo cerrado). Google avisa que los horarios pueden variar: confirmar con el dueño feriados y si atienden con cita."
     },
     {
       "id": "P3",
-      "tema": "Logotipo y paleta de marca",
+      "tema": "Dirección, esquina y código postal",
       "bloqueante": false,
-      "estado": "abierto",
-      "como": "Pedir isologotipo SVG o PNG transparente. Hoy hay un isotipo tipográfico provisorio (favicon.svg)."
+      "estado": "resuelto",
+      "como": "Resuelto el 15/10/2026: Don Segundo Sombra 1130, esquina Justo Daract, Paso del Rey, CP 1742, con el punto de la ficha de Google."
     },
     {
       "id": "P4",
-      "tema": "Fotos y autorización de uso",
+      "tema": "Stock vigente y precios",
       "bloqueante": true,
       "estado": "abierto",
-      "como": "Que el dueño entregue o autorice por escrito fotos y logotipo. No se reutilizan imágenes de Facebook ni del catálogo del grupo sin permiso."
+      "como": "A cargo del responsable del proyecto (publicaciones y multimedia). data/vehicles.json queda vacío con el formato listo. Falta que el dueño confirme precios, disponibilidad y quién da de baja una unidad."
     },
     {
       "id": "P5",
-      "tema": "Stock real",
+      "tema": "Fotos y videos",
       "bloqueante": true,
       "estado": "abierto",
-      "como": "Hay 5 fichas cargadas desde el catálogo de Grupo Almafuerte (relevadas el 12/10/2026). Antes de producción: confirmar con el vendedor disponibilidad, precio vigente, kilometraje y sucursal de cada una; recorrer https://grupoalmafuerte.com/autos-usados/ completo; aclarar las 3 fichas de data/autos-en-revision.json (Peugeot Feline: modelo; Camión VW: sucursal; Sandero 2024: 0 km/usado y motor 1.6/1.3); definir quién actualiza el stock. El Hyundai Tucson 2018 visto en Facebook y los modelos de la investigación V1 siguen sin confirmar."
+      "como": "A cargo del responsable del proyecto. Sin permiso escrito no se publican fotos ni videos de redes."
     },
     {
       "id": "P6",
-      "tema": "Correo institucional",
+      "tema": "Logo original y colores oficiales",
       "bloqueante": false,
       "estado": "abierto",
-      "como": "Definir un correo comercial. No usar la casilla hotmail de Facebook."
+      "como": "Pedir SVG/PNG maestro y códigos HEX. La paleta actual sale de una captura del perfil de Instagram."
     },
     {
       "id": "P7",
-      "tema": "Nombre y mención del Grupo Almafuerte",
-      "bloqueante": false,
+      "tema": "Razón social, CUIT y email comercial",
+      "bloqueante": true,
       "estado": "abierto",
-      "como": "El sitio dice «forma parte del Grupo Almafuerte» (nombre de la web oficial). La biografía de Instagram dice «Grupo Automóviles Almafuerte». El dueño confirma cuál usar y con qué texto."
+      "como": "Necesarios para el pie legal y los formularios."
     },
     {
       "id": "P8",
-      "tema": "Servicios sin confirmar",
+      "tema": "Financiación, permuta y consignación: condiciones",
       "bloqueante": false,
       "estado": "abierto",
-      "como": "Permuta, tasación y garantía ya figuran atribuidas a Grupo Almafuerte. Falta confirmar: motos (no hay en el catálogo), 0 km, consignación, gestoría, reserva online, y las condiciones concretas de garantía y financiación por unidad."
+      "como": "Hoy solo «consultá». Pedir entidades, anticipo, requisitos y leyendas obligatorias."
     },
     {
       "id": "P9",
-      "tema": "Diez años en el mercado",
+      "tema": "Garantía, tasación y gestoría",
       "bloqueante": false,
       "estado": "abierto",
-      "como": "Confirmar el año de inicio para reemplazar la frase atribuida a Facebook por un dato firme."
+      "como": "No se mencionan hasta que el dueño confirme si existen y su alcance."
     },
     {
       "id": "P10",
-      "tema": "Reseñas y valoración",
+      "tema": "Reseñas",
       "bloqueante": false,
-      "estado": "abierto",
-      "como": "Abrir la ficha de Google Maps, confirmar a qué nombre corresponde y el puntaje real (Yably 4,20/5 con 17 reseñas; GTM 8.4 con 27). Pedir permiso antes de publicar comentarios. V2 suma Cylex 4,1/5 con 15 opiniones; Cylex y Yably parecen compartir fuente, no se suman."
+      "estado": "resuelto",
+      "como": "Resuelto el 15/10/2026: 4,7 sobre 5 con 49 opiniones en Google (captura del responsable). Solo se publica el promedio y la cantidad, con fecha y enlace. Reseñas individuales: solo con permiso. Volver a chequear antes de producción."
     },
     {
       "id": "P11",
-      "tema": "Dominio y siteUrl",
+      "tema": "Dominio drautomoviles.com",
       "bloqueante": true,
       "estado": "abierto",
-      "como": "Registrar dominio (por ejemplo .com.ar), completar publicacion.siteUrl y pasar publicIndexing y official a true."
+      "como": "No resolvía DNS el 15/10/2026. Preguntar si lo conservan y dónde está el DNS."
     },
     {
       "id": "P12",
-      "tema": "Revisión legal de privacidad.html",
+      "tema": "Privacidad y consentimiento",
       "bloqueante": true,
       "estado": "abierto",
-      "como": "Revisión profesional antes de producción."
+      "como": "Texto de privacidad para WhatsApp y formularios, revisado por quien corresponda."
     },
     {
       "id": "P13",
-      "tema": "Vigencia del listado del Banco Nación",
+      "tema": "Nombre comercial definitivo",
       "bloqueante": false,
       "estado": "abierto",
-      "como": "El sitio cita el listado del 16/07/2025. El expediente OSINT textual V2 (12/10/2026) reporta la misma fila en listados de agosto y septiembre de 2025 y en el del 19/05/2026 (https://bna.com.ar/Downloads/Home_MasAutos_Listado_concesionarias19052026.pdf), y en notas de prensa del 17/07/2025 y 09/07/2026. Abrir ese PDF; si la fila está, actualizar la fecha y el enlace en scripts/build-index.mjs (hoy fijos a 16/07/2025). No publicar tasas ni plazos del programa como oferta de la agencia."
-    },
-    {
-      "id": "P14",
-      "tema": "Afiliación a la CCA Entre Ríos",
-      "bloqueante": false,
-      "estado": "abierto",
-      "como": "Horizonte figura en https://ccaentrerios.org/agencias/ (con otro teléfono: 343 405-0787). Confirmar con el dueño que sigue afiliado y, si quiere, sumar el dato al sitio."
-    },
-    {
-      "id": "P15",
-      "tema": "Marca y relación con Grupo Almafuerte",
-      "bloqueante": true,
-      "estado": "abierto",
-      "como": "Definir con el dueño qué marca representa el sitio (Horizonte Automotores o la sucursal «Concesionario Usados María Grande» del Grupo Almafuerte), el dominio y la redacción autorizada de la relación. Evitar «adquirida», «absorbida» o «renombrada» si no se confirman. Esto condiciona nombre, logotipo, dominio, reseñas y contacto."
-    },
-    {
-      "id": "P16",
-      "tema": "Enlace al catálogo y gama GWM del grupo",
-      "bloqueante": false,
-      "estado": "abierto",
-      "como": "El sitio enlaza https://grupoalmafuerte.com/autos-usados/ (URL del menú del grupo; no se pudo abrir en la investigación: probarla). La gama GWM 0 km y el test drive se atienden en Paraná y Santa Fe: no mostrarlos como oferta de María Grande sin confirmación."
-    },
-    {
-      "id": "P17",
-      "tema": "Domicilio alternativo Av. Argentina 536",
-      "bloqueante": false,
-      "estado": "abierto",
-      "como": "Aparece en Entre Ríos Total, Guía Clarín y una ficha de TodosNegocios (nombre «Horizonte Automotores Usados y 0 Km.», tel. 0343 494-1092). Una verificación previa leyó Paraná en Entre Ríos Total; el expediente V2 lo lee como María Grande: abrir esa ficha y resolver. Preguntar al dueño si el 536 fue un domicilio anterior. Mientras tanto no se publica; el sitio usa solo Av. Argentina 2021."
+      "como": "«DR Automóviles» (con tilde) o «DR Automoviles»."
     }
   ]
 }
