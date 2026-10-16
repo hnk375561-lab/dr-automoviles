@@ -260,7 +260,7 @@ ${cvForm({
 <div class="cv-f cv-f--wide">${cvT('Qué querés hacer')}${cvChips('u-in', 'Quiero', ['Entregarlo y llevarme otro', 'Consignarlo', 'Consultar si lo toman'])}</div>
 ${autos.length ? `<div class="cv-f cv-f--wide">${cvL('¿Alguna unidad te interesa?', 'u-un', 'Opcional')}<select id="u-un" data-lbl="Unidad que me interesa" data-stock><option value="">Todavía no sé</option></select></div>` : ''}
 <div class="cv-f cv-f--wide">${cvL('Algo más que quieras contar', 'u-no', 'Opcional')}<textarea id="u-no" data-lbl="Comentarios" maxlength="280" placeholder="Ej: tiene GNC de quinta generación, cubiertas nuevas…"></textarea><span class="cv-cnt" data-cnt aria-hidden="true">0 / 280</span></div>`,
-  nota: 'Es un mensaje que armás vos: no se envía ni se guarda nada desde este sitio. Las condiciones se acuerdan con ${esc(NAME)}.',
+  nota: `Es un mensaje que armás vos: no se envía ni se guarda nada desde este sitio. Las condiciones se acuerdan con ${esc(NAME)}.`,
 })}
 </div>
 </div>
