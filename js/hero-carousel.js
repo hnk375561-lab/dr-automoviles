@@ -9,7 +9,7 @@
   var slides = [].slice.call(root.querySelectorAll('[data-hero-slide]'));
   if (slides.length < 2) return;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var INTERVAL = 2000, i = 0, timer = null;
+  var INTERVAL = 2000, i = 0, timer = null, inView = true;
 
   function load(s) {
     var m = s && s.querySelector('img');
@@ -31,7 +31,7 @@
     load(slides[(i + 1) % slides.length]);
   }
   function start() {
-    if (reduce || timer || document.hidden) return;
+    if (reduce || timer || document.hidden || !inView) return;
     hero.classList.remove('is-paused');
     timer = setInterval(function () { go(i + 1); }, INTERVAL);
   }
@@ -56,4 +56,11 @@
   if (document.readyState === 'complete') preload(); else window.addEventListener('load', preload);
   start(); /* el reloj arranca ya: la primera foto dura lo mismo que las demás (2 s) */
   document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  /* Con el hero fuera de pantalla se frena el carrusel (y su zoom): el scroll de las unidades queda liviano. */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      inView = es[es.length - 1].isIntersecting;
+      inView ? start() : stop();
+    }, { threshold: 0 }).observe(hero);
+  }
 })();
