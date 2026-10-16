@@ -107,5 +107,41 @@
   "competenciaSoloReferencia": [
     "FMAutos (gtm.com.ar/concesionario/fmautos/)",
     "Automóviles JMU (automovilesjmu.com): tiene catálogo, WhatsApp y financiación; no copiar textos ni datos"
-  ]
+  ],
+  "guiaGeneral": {
+    "consultadoEl": "2026-10-15",
+    "alcance": "Respaldo de las preguntas y el glosario de compra de usados de index.html (información general, no condiciones de DR Automóviles). Los requisitos registrales cambian: no afirmar nada fuera de lo listado y mandar a consultar al Registro.",
+    "fuentes": [
+      {
+        "id": "dnrpa-15-preguntas",
+        "url": "https://www.argentina.gob.ar/noticias/compra-venta-de-autos-respuestas-las-15-preguntas-mas-frecuentes",
+        "aporta": "Informe de dominio (lo puede pedir cualquier mayor de edad, online o en el Registro); cálculo definitivo de costos a cargo del Registro; denuncia de venta (Formulario 11); CAT; cédula azul; inhibición; seguro obligatorio (Ley 24.449, art. 68).",
+        "confianza": "alta para conceptos estables",
+        "nota": "Nota oficial del 26/04/2019. NO se usan de ahí montos (CETA, $100.000, $1.800.000), antigüedades de la verificación ni plazos de vigencia de cédulas: están desactualizados."
+      },
+      {
+        "id": "caba-compra-vehiculos",
+        "url": "https://buenosaires.gob.ar/tramites/tramites-por-compra-de-vehiculos-ante-la-dnrpa",
+        "aporta": "Pedir el informe de dominio antes de comprar.",
+        "confianza": "alta"
+      },
+      {
+        "id": "iprofesional-prenda",
+        "url": "https://www.iprofesional.com/actualidad/388587-transferencia-de-auto-cuanto-plata-cuesta-y-como-es-el-tramite",
+        "aporta": "Con prenda, se presenta constancia de que la transferencia se comunicó al acreedor prendario (23/06/2026).",
+        "confianza": "media"
+      },
+      {
+        "id": "iprofesional-costo",
+        "url": "https://www.iprofesional.com/autos/451823-cuanto-sale-la-transferencia-de-un-auto-usado-en-abril-2026",
+        "aporta": "El costo se calcula sobre la valuación oficial de la DNRPA y se inicia con precarga online (08/04/2026).",
+        "confianza": "media"
+      }
+    ],
+    "noAfirmado": [
+      "Qué vehículos deben pasar verificación policial: la guía oficial de 2019 dice 2 a 12 años, otra fuente de 2021 dice hasta 20 años y La Nación (28/10/2025) dice todos salvo los inscriptos antes del 1/1/2001. Sin norma vigente verificada, el sitio solo dice qué es (glosario) y la guía manda a consultar al Registro.",
+      "Vigencia de la verificación: La Nación (28/10/2025) dice 150 días; iProfesional (09/05/2026) dice 150 días hábiles. No se publica.",
+      "Si el libre deuda es obligatorio: iProfesional (09/05/2026) y Diario de Cuyo (26/08/2025) indican que dejó de ser requisito obligatorio desde septiembre de 2024, pero la guía oficial de 2019 lo lista. La guía del sitio lo presenta como papel que «conviene pedir», sin afirmar que sea obligatorio."
+    ]
+  }
 }

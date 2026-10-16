@@ -26,6 +26,7 @@ const fdate = (iso) => iso.split('-').reverse().join('/');
 const wa = (txt) => (C.whatsApp ? `https://wa.me/${C.whatsApp}?text=${encodeURIComponent(txt)}` : null);
 const WA = wa('Hola! Quiero consultar por las unidades disponibles.');
 const EXT = 'target="_blank" rel="noopener noreferrer"';
+const DNRPA = 'https://www.dnrpa.gov.ar/portal_dnrpa/', LEY24449 = 'https://www.argentina.gob.ar/normativa/nacional/ley-24449-818';
 const WAFORM = C.whatsApp ? `<a class="btn p" data-wa-msg data-wa="${C.whatsApp}" href="https://wa.me/${C.whatsApp}" ${EXT}>Enviar por WhatsApp</a>` : '';
 const CPBTN = `<button class="btn${C.whatsApp ? '' : ' p'}" type="submit" data-copiar-msg hidden>Copiar mensaje</button>`;
 const LEYENDA_CORTA = 'Demo ilustrativa · No es el sitio oficial';
@@ -170,6 +171,10 @@ const faq = [
   qa('¿Dónde veo las unidades disponibles?', `Se publican en nuestro <a href="${IG}" ${EXT}>Instagram</a>${TT ? `, <a href="${TT}" ${EXT}>TikTok</a>` : ''} y <a href="${FB}" ${EXT}>Facebook</a>. Los precios no figuran en las publicaciones: consultalos antes de ir.`),
   qa('¿Cómo coordino una visita?', `Entrá a <a href="reserva.html">Agendar visita y prueba de manejo</a>, elegí un día y una franja y enviá la consulta. No es un turno: el día y la hora se acuerdan con ${esc(NAME)}.`),
   H.display ? qa('¿Cuándo atienden?', `Los días y franjas, y si estamos abiertos ahora, están en la sección <a href="#horarios">Horarios</a>.`) : '',
+  // Información general de compra de usados: fuentes en data/sources.json (guiaGeneral). No describe condiciones de la agencia.
+  qa('¿Puedo pedir yo el informe de dominio de un auto?', `Sí. Cualquier persona mayor de edad puede solicitarlo en el Registro del Automotor o por internet, en el sitio de la <a href="${DNRPA}" ${EXT}>DNRPA</a>. Muestra quién es el titular y las anotaciones del vehículo, como prendas o embargos. Conviene pedirlo antes de decidir la compra.`),
+  qa('¿Cuánto cuesta la transferencia?', `Depende de cada vehículo: los aranceles y los impuestos se calculan sobre su valuación oficial y varían según la jurisdicción. La <a href="${DNRPA}" ${EXT}>DNRPA</a> ofrece un estimador online, pero el cálculo definitivo lo hace el Registro al presentar el trámite. Este sitio no informa costos de transferencia.`),
+  qa('¿El seguro es obligatorio para circular?', `Sí. Todo automotor debe tener, como mínimo, un seguro de responsabilidad civil contra terceros para circular (<a href="${LEY24449}" ${EXT}>Ley de Tránsito 24.449</a>, art. 68).`),
 ].filter(Boolean).join('\n');
 const glos = [
   ['Título del automotor', 'Documento del Registro del Automotor que acredita quién es el titular del vehículo.'],
@@ -180,6 +185,11 @@ const glos = [
   ['Verificación policial', 'Control físico que comprueba que los números de motor y chasis coinciden con los papeles.'],
   ['Formulario 08', 'Formulario de transferencia que firman las partes cuando cambia el titular.'],
   ['Parte de pago', 'Entregar tu usado como parte del precio de otra unidad.'],
+  ['CAT (título digital)', 'Constancia de Asignación de Título: acredita el título digital y se puede presentar en lugar del título en papel.'],
+  ['Cédula azul', 'Cédula para quien maneja el auto de otra persona de forma habitual. La solicita el titular; no reemplaza a la cédula verde.'],
+  ['Prenda', 'Respaldo de un crédito que queda anotado sobre el vehículo y aparece en el informe de dominio. Si hay una prenda, la transferencia se comunica a quien dio el crédito.'],
+  ['Inhibición', 'Medida judicial que alcanza a una persona. Si el titular está inhibido, no se puede inscribir la transferencia hasta que el juez la deje sin efecto.'],
+  ['Denuncia de venta', 'Trámite que presenta quien vendió ante el Registro de radicación del vehículo (Formulario 11 o trámite posterior). Resguarda su responsabilidad civil por los daños que cause el auto a partir de la fecha de inscripción.'],
 ].map(([t, d]) => qa(t, d)).join('\n');
 const secPreguntas = `
 <section class="lt" id="preguntas" aria-labelledby="preg-t"><div class="w">
@@ -468,7 +478,7 @@ ${secNosotros}
 <div class="dr-ct-head"><p class="ey">Contacto</p><h2 id="contacto-t">Hablá con <em>un asesor</em></h2><p class="sec-p">Escribinos o llamanos y te contamos disponibilidad, precio y formas de pago de la unidad que te interese.</p></div>
 <div class="dr-ct-grid">
 <ul class="dr-ch">${canales}</ul>
-<aside class="dr-ct-side" aria-label="Consultar y redes"><p class="dr-ct-t">¿Buscás un auto o una moto?</p><p>Contanos qué estás buscando y te ayudamos a encontrarlo.</p><div class="row"><a class="btn p" href="${ctaHead.href}" ${EXT}>${WA ? 'Consultar con un asesor' : 'Consultar por Facebook'}</a><a class="btn" href="reserva.html">Agendar visita</a></div>
+<aside class="dr-ct-side" aria-label="Consultar y redes"><p class="dr-ct-t">¿Buscás un auto?</p><p>Contanos qué estás buscando y te ayudamos a encontrarlo.</p><div class="row"><a class="btn p" href="${ctaHead.href}" ${EXT}>${WA ? 'Consultar con un asesor' : 'Consultar por Facebook'}</a><a class="btn" href="reserva.html">Agendar visita</a></div>
 <div class="dr-soc"><p class="dr-k">En la web</p><ul>${redes}</ul></div></aside>
 </div>
 </div></section>
