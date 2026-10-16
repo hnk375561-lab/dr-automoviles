@@ -26,6 +26,10 @@ const fdate = (iso) => iso.split('-').reverse().join('/');
 const wa = (txt) => (C.whatsApp ? `https://wa.me/${C.whatsApp}?text=${encodeURIComponent(txt)}` : null);
 const WA = wa('Hola! Quiero consultar por las unidades disponibles.');
 const EXT = 'target="_blank" rel="noopener noreferrer"';
+const SCORE = String(D.reviews.puntaje).replace('.', ',');
+const FECHA_RV = String(D.reviews.fecha || '').split('-').reverse().join('/');
+/* Tarjeta de opiniones de Google (solo puntaje, cantidad, fecha y enlace; sin reseñas ni nombres) */
+const GREVIEWS = D.reviews.publicadas && D.reviews.googleUrl && D.reviews.puntaje && D.reviews.cantidad ? `<aside class="gr" aria-label="Opiniones de Google de DR Automóviles"><div class="gr-in"><p class="gr-top"><span class="gr-g"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg></span>Opiniones en Google</p><p class="gr-score">${SCORE}<small>/5</small></p><div class="gr-meta"><span class="gr-stars" style="--p:${Math.round(D.reviews.puntaje / (D.reviews.escala || 5) * 100)}%" role="img" aria-label="${SCORE} de 5 estrellas"></span><p class="gr-n"><b>${D.reviews.cantidad}</b> opiniones</p></div><div class="gr-foot"><p class="gr-src">Puntaje de Google Maps al ${FECHA_RV}.</p><a class="gr-cta" href="${esc(D.reviews.googleUrl)}" target="_blank" rel="noopener noreferrer">Ver opiniones en Google<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div></div></aside>` : '';
 const DNRPA = 'https://www.dnrpa.gov.ar/portal_dnrpa/', LEY24449 = 'https://www.argentina.gob.ar/normativa/nacional/ley-24449-818';
 const WAFORM = C.whatsApp ? `<a class="btn p" data-wa-msg data-wa="${C.whatsApp}" href="https://wa.me/${C.whatsApp}" ${EXT}>Enviar por WhatsApp</a>` : '';
 const CPBTN = `<button class="btn${C.whatsApp ? '' : ' p'}" type="submit" data-copiar-msg hidden>Copiar mensaje</button>`;
@@ -406,7 +410,7 @@ const secNosotros = `
 <p class="nz-p">${esc(D.presentacion.antiguedad)}</p>
 <div class="row nz-cta"><a class="btn p" href="#unidades">Ver unidades</a><a class="btn" href="#contacto">Hablar con un asesor</a></div>
 </div>
-<div class="nz-big"><span class="nz-flag" aria-hidden="true"></span><p class="nz-num">18</p><p class="nz-num-l">años de trayectoria</p><p class="nz-num-s">empresa familiar</p></div>
+<div class="nz-side"><div class="nz-big"><span class="nz-flag" aria-hidden="true"></span><p class="nz-num">18</p><p class="nz-num-l">años de trayectoria</p><p class="nz-num-s">empresa familiar</p></div>${GREVIEWS}</div>
 </div></div>
 <div class="nz-body"><div class="w">
 <h3 class="nz-h">Qué podés resolver con nosotros</h3>
@@ -443,7 +447,6 @@ const index = page({
 <main id="top">
 <div class="hero" role="region" aria-label="${esc(NAME)}">
 <div class="hero-media" data-hero-carousel aria-hidden="true">${HERO_SLIDES}</div>
-<div class="hero-ticks" aria-hidden="true">${HERO_FOTOS.map(() => '<i></i>').join('')}</div>
 <div class="hx-copy">
 <p class="ey">${esc(L.city)} · ${esc(L.partido)}</p>
 <h1><span class="sr">${esc(NAME)}: </span>Autos usados <em>en ${esc(L.city)}</em></h1>

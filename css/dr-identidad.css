@@ -42,6 +42,29 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;back
 .nz-flag{position:absolute;right:-12%;top:-14%;width:78%;aspect-ratio:1;border-radius:50%;background:repeating-conic-gradient(rgba(238,28,34,.85) 0 25%,rgba(42,42,44,.9) 0 50%) 0 0/44px 44px;opacity:.5;-webkit-mask-image:radial-gradient(circle,#000 0 52%,transparent 74%);mask-image:radial-gradient(circle,#000 0 52%,transparent 74%)}
 @media(prefers-reduced-motion:reduce){.cv-needle{transition:none}}
 
+/* Opiniones de Google bajo el bloque «18 años»: mismo damero, mismo negro y rojo; solo puntaje, cantidad, fecha y enlace a la ficha */
+.nz-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.gr{position:relative;overflow:hidden;color:#fff;background:#0a0a0c;border-bottom:8px solid #ee1c22;clip-path:polygon(0 0,100% 0,100% 100%,40px 100%,0 calc(100% - 40px))}
+.gr::before{content:"";display:block;height:12px;background:repeating-conic-gradient(#ee1c22 0 25%,#060607 0 50%) 0 0/12px 12px}
+.gr-in{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(18px,2.6vw,32px);row-gap:16px;align-items:center;padding:clamp(20px,2.4vw,28px) clamp(22px,3vw,40px) clamp(22px,2.6vw,30px)}
+.gr-top{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:0;font:800 12px/1 "Exo 2",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.gr-g{flex:none;width:22px;height:22px;padding:3px;border-radius:50%;background:#fff;box-sizing:border-box}
+.gr-g svg{display:block;width:100%;height:100%}
+.gr-score{margin:0;color:#fff;font:italic 800 clamp(64px,8vw,92px)/.8 var(--hero-title,"Exo 2",system-ui,sans-serif);letter-spacing:-.05em}
+.gr-score small{font-size:.34em;letter-spacing:0;color:rgba(255,255,255,.55);font-weight:700;margin-left:.12em}
+.gr-meta{display:flex;flex-direction:column;gap:8px;min-width:0}
+.gr-stars{--p:94%;display:block;width:114px;height:22px;background:linear-gradient(90deg,#fbbc04 var(--p),rgba(255,255,255,.22) var(--p));-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.8l1.4-6.8L2.2 9.3l6.9-.8z'/%3E%3C/svg%3E") 0 0/22.8px 22px repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.8l1.4-6.8L2.2 9.3l6.9-.8z'/%3E%3C/svg%3E") 0 0/22.8px 22px repeat-x}
+.gr-n{margin:0;font:700 clamp(15px,1.5vw,17px)/1.25 "Exo 2",system-ui,sans-serif;color:#fff}
+.gr-n b{color:#ee1c22;font-weight:800}
+.gr-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14)}
+.gr-src{margin:0;font-size:12px;line-height:1.35;color:rgba(255,255,255,.58)}
+.gr-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;font:800 12px/1 "Exo 2",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;transition:background-color .2s ease,border-color .2s ease}
+.gr-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gr-cta:hover{background:#ee1c22;border-color:#ee1c22}
+.gr-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:480px){.gr-in{grid-template-columns:minmax(0,1fr);justify-items:start}.gr-foot{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.gr-cta{transition:none}}
+
 /* Unidad vendida */
 .car-v,.fi-v{display:inline-block;margin-left:.5rem;padding:.15rem .55rem;border-radius:2px;background:#ee1c22;color:#fff;font:700 .72rem/1.2 "Exo 2",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
 .car--vendida .car-ph img{filter:grayscale(.6) brightness(.85)}

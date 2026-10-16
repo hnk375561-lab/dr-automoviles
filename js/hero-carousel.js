@@ -1,5 +1,5 @@
 /* DR Automóviles · carrusel del hero
-   Cambia de foto cada 2 segundos, con crossfade y zoom (Ken Burns) en cada una.
+   Cambia de foto cada 2 segundos (todas, incluida la primera), con crossfade y zoom (Ken Burns) en cada una.
    Se detiene solo con la pestaña oculta; con «reducir movimiento» queda fija la primera foto. */
 (function () {
   'use strict';
@@ -8,7 +8,6 @@
   var hero = root.closest('.hero') || root.parentNode;
   var slides = [].slice.call(root.querySelectorAll('[data-hero-slide]'));
   if (slides.length < 2) return;
-  var ticks = [].slice.call(hero.querySelectorAll('.hero-ticks i'));
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var INTERVAL = 2000, i = 0, timer = null;
 
@@ -29,7 +28,6 @@
       s.classList.toggle('is-active', on);
       if (on) s.classList.remove('is-leaving');
     });
-    ticks.forEach(function (t, n) { t.classList.toggle('is-on', n === i); t.classList.toggle('is-done', n < i); });
     load(slides[(i + 1) % slides.length]);
   }
   function start() {
@@ -42,7 +40,6 @@
     hero.classList.add('is-paused');
   }
 
-  if (ticks[0]) ticks[0].classList.add('is-on');
   hero.classList.add('hero-carousel-ready');
   if (reduce) return;
 
@@ -57,6 +54,6 @@
     });
   }
   if (document.readyState === 'complete') preload(); else window.addEventListener('load', preload);
-  setTimeout(start, INTERVAL);
+  start(); /* el reloj arranca ya: la primera foto dura lo mismo que las demás (2 s) */
   document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
 })();
