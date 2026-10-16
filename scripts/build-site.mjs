@@ -5,8 +5,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(root, '_site');
-const files = ['index.html', 'reserva.html', 'privacidad.html', '404.html', 'robots.txt', 'site.webmanifest', 'favicon.svg', '.nojekyll'];
+const files = ['index.html', 'reserva.html', 'privacidad.html', '404.html', 'robots.txt', 'site.webmanifest', 'favicon.svg'];
 const optional = ['sitemap.xml'];
+// .nojekyll es un archivo oculto vacío que a veces no viaja en los zips: se crea acá, no se exige en el repo.
 const dirs = ['fonts', 'images'];
 const whole = ['css', 'js'];   // se copian completas
 
@@ -33,4 +34,5 @@ for (const d of dirs) {
   for (const f of fs.readdirSync(src)) if (/\.(woff2|webp|png|jpe?g|svg|avif)$/i.test(f)) { fs.copyFileSync(path.join(src, f), path.join(out, d, f)); n++; }
 }
 for (const d of whole) { const src = path.join(root, d); if (fs.existsSync(src)) { fs.cpSync(src, path.join(out, d), { recursive: true }); n += fs.readdirSync(src, { recursive: true }).length; } }
+fs.writeFileSync(path.join(out, '.nojekyll'), '');
 console.log(`_site/ listo: ${n} archivos`);
