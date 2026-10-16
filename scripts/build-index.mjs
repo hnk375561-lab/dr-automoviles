@@ -428,15 +428,20 @@ const ld = {
   ...(siteUrl ? { url: siteUrl } : {}), ...(C.phoneTel ? { telephone: C.phoneTel } : {}), ...(C.email ? { email: C.email } : {}), ...(L.mapsUrl ? { hasMap: L.mapsUrl } : {}), ...(COORD ? { geo: { '@type': 'GeoCoordinates', latitude: COORD.lat, longitude: COORD.lng } } : {}), ...(openSpec.length ? { openingHoursSpecification: openSpec } : {}),
 };
 
+// Carrusel del hero: fotos de unidades suministradas por el responsable (16/10/2026). Decorativas: sin texto alternativo ni datos de venta.
+const HERO_FOTOS = ['01', '02', '03', '04', '05', '06', '07', '08'];
+const HERO_SLIDES = HERO_FOTOS.map((n, k) => `<figure class="hero-slide hero-slide--${n}${k === 0 ? ' is-active' : ''}" data-hero-slide><img src="images/hero/hero-${n}.webp" srcset="images/hero/hero-${n}-828.webp 828w, images/hero/hero-${n}.webp 1440w" sizes="100vw" width="1440" height="1440" alt="" decoding="async"${k === 0 ? ' fetchpriority="high"' : ' loading="lazy"'}></figure>`).join('');
+
 const index = page({
   title: `${NAME} · Autos usados en ${L.city}, ${L.province}`,
   desc: `${NAME} en ${L.city}, ${L.partido}: compra y venta de autos usados, permutas y consignaciones. Visitanos en ${L.address} o escribinos por WhatsApp.`,
   file: 'index.html',
-  extraHead: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n<script defer src="js/secciones.js"></script>\n<script defer src="js/mapa.js"></script>\n<script defer src="js/horarios.js"></script>\n<script defer src="js/site.js"></script>\n<script defer src="js/reserva-inline.js"></script>\n`,
+  extraHead: `<link rel="stylesheet" href="css/hero-carousel.css">\n<script type="application/ld+json">${JSON.stringify(ld)}</script>\n<script defer src="js/hero-carousel.js"></script>\n<script defer src="js/secciones.js"></script>\n<script defer src="js/mapa.js"></script>\n<script defer src="js/horarios.js"></script>\n<script defer src="js/site.js"></script>\n<script defer src="js/reserva-inline.js"></script>\n`,
   body: `${header()}
 <main id="top">
 <div class="hero" role="region" aria-label="${esc(NAME)}">
-<div class="hero-media" aria-hidden="true"><figure class="hero-logo"><img src="images/logo.png" width="512" height="512" alt="" fetchpriority="high" decoding="async"></figure></div>
+<div class="hero-media" data-hero-carousel aria-hidden="true">${HERO_SLIDES}</div>
+<div class="hero-ticks" aria-hidden="true">${HERO_FOTOS.map(() => '<i></i>').join('')}</div>
 <div class="hx-copy">
 <p class="ey">${esc(L.city)} · ${esc(L.partido)}</p>
 <h1><span class="sr">${esc(NAME)}: </span>Autos usados <em>en ${esc(L.city)}</em></h1>
