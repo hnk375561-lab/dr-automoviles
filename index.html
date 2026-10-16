@@ -1442,8 +1442,8 @@ dialog.ficha::backdrop{background:rgba(3,3,4,.82)}
 .fi-l{display:flex;flex-direction:column;min-width:0;background:#070707}
 .fi-l .fi-m{flex:none}
 .fi-s{flex:1 1 auto;display:flex;flex-direction:column;gap:14px;padding:clamp(18px,2.4vw,28px);background:linear-gradient(180deg,#141414,#060607);border-top:1px solid rgba(238,28,34,.4)}
-.fi-lg{align-self:flex-start;padding:10px 16px;background:#fefefe}
-.fi-lg img{display:block;width:150px;max-width:100%;height:auto}
+.fi-lg{align-self:flex-start;padding:0;background:transparent}
+.fi-lg img{display:block;width:clamp(200px,24vw,280px);max-width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.22),0 0 40px rgba(238,28,34,.35)}
 .fi-s-t{margin:0;color:#fff;font:italic 400 clamp(20px,2vw,25px)/1.2 var(--h)}
 .fi-s-k{margin:0 0 6px;color:var(--y);font:700 13px/1.2 var(--b)}
 .fi-sv{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -1551,8 +1551,8 @@ dialog.ficha::backdrop{background:rgba(3,3,4,.82)}
 .cv-b-l{margin:3px 0!important;padding-left:14px!important;text-indent:-14px}
 .cv-b-l::before{content:"• ";font-weight:800}
 .cv-b-l b{font-weight:800}
-.cv-b-v{opacity:.62;font-style:italic}
-.cv-b-h{position:absolute;right:28px;bottom:8px;font:500 11.5px/1 var(--hero-copy);opacity:.6}
+.cv-b-v{opacity:1;font-style:italic;font-weight:700}
+.cv-b-h{position:absolute;right:28px;bottom:8px;font:700 12.5px/1 var(--hero-copy);opacity:1}
 .cv-acts{display:grid;gap:12px}
 .cv-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;margin:0;padding:0 18px;border:1.5px solid var(--cv-chl);border-radius:0;background:none;color:var(--cv-tx);font:800 12.5px/1 var(--hero-copy);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .18s,color .18s,border-color .18s}
 .cv-btn[hidden]{display:none}
@@ -1901,6 +1901,11 @@ html body .sb>.src{margin-top:18px;color:#cbcbcb}
 .nz-tile p{flex:1;margin:0;color:#484848;font-size:16.5px;line-height:1.55}
 .nz-tile a{width:fit-content;color:#060607;font:800 15px/1.2 var(--hero-copy,var(--b));text-decoration:underline;text-decoration-color:#ee1c22;text-decoration-thickness:3px;text-underline-offset:5px}
 .nz-net{margin-top:clamp(36px,5vw,64px);padding:clamp(22px,3vw,40px);background:#060607;color:#fff;border-top:6px solid #ee1c22}
+.nz-net--mapa{margin:0;padding:clamp(28px,4vw,52px) 0 0}
+.nz-net--mapa ul{width:min(560px,100%)}
+.nz-net-acc{margin:20px 0 0}
+.nz-mapa{margin-top:clamp(24px,3vw,40px);line-height:0;background:#111}
+.nz-mapa iframe{display:block;width:100%;height:clamp(340px,52vw,560px);border:0}
 .nz-net .nz-h{color:#fff}
 .nz-net-p{margin:10px 0 0;color:#e5e5e5;font-size:17px}
 .nz-net ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:22px 0 0;padding:0;list-style:none}
@@ -2058,7 +2063,7 @@ html body .dr-v71 .dr-addr .btn{flex:1 1 auto}
 }
 </style>
 <link rel="stylesheet" href="css/dr-identidad.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoDealer","name":"DR Automóviles","address":{"@type":"PostalAddress","streetAddress":"Don Segundo Sombra 1130","postalCode":"1742","addressLocality":"Paso del Rey","addressRegion":"Buenos Aires","addressCountry":"AR"},"sameAs":["https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/","https://www.instagram.com/dr.automoviles/","https://www.tiktok.com/@dr.automoviles","https://www.youtube.com/@drautomoviles8734/playlists"],"telephone":"+541167425978","hasMap":"https://www.google.com/maps/place/DR+Automoviles/@-34.6496742,-58.7776261,17z/data=!3m1!4b1!4m6!3m5!1s0x95bc95995d4bfff7:0x14eab2a5f04f0259!8m2!3d-34.6496742!4d-58.7750512!16s%2Fg%2F11q2qv7vtt","geo":{"@type":"GeoCoordinates","latitude":-34.6496742,"longitude":-58.7750512},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:30","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday"],"opens":"08:00","closes":"18:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"13:00"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoDealer","name":"DR Automóviles","address":{"@type":"PostalAddress","streetAddress":"Don Segundo Sombra 1130","postalCode":"1742","addressLocality":"Paso del Rey","addressRegion":"Buenos Aires","addressCountry":"AR"},"sameAs":["https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/","https://www.instagram.com/dr.automoviles/","https://www.tiktok.com/@dr.automoviles"],"telephone":"+541167425978","hasMap":"https://www.google.com/maps/place/DR+Automoviles/@-34.6496742,-58.7776261,17z/data=!3m1!4b1!4m6!3m5!1s0x95bc95995d4bfff7:0x14eab2a5f04f0259!8m2!3d-34.6496742!4d-58.7750512!16s%2Fg%2F11q2qv7vtt","geo":{"@type":"GeoCoordinates","latitude":-34.6496742,"longitude":-58.7750512},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:30","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday"],"opens":"08:00","closes":"18:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"13:00"}]}</script>
 <script defer src="js/secciones.js"></script>
 <script defer src="js/mapa.js"></script>
 <script defer src="js/horarios.js"></script>
@@ -2366,11 +2371,6 @@ html body .dr-v71 .dr-addr .btn{flex:1 1 auto}
 </div>
 <div class="nz-big"><span class="nz-flag" aria-hidden="true"></span><p class="nz-num">18</p><p class="nz-num-l">años de trayectoria</p><p class="nz-num-s">según su propia biografía de Instagram</p></div>
 </div></div>
-<div class="nz-stats"><ul>
-<li><b>4,7</b><span>de 5 en Google, sobre 49 opiniones (consultado el 15/10/2026)</span></li>
-<li><b>6</b><span>días de atención por semana; domingo cerrado</span></li>
-<li><b>3</b><span>servicios: compra y venta, permutas y consignaciones, y financiación a consultar</span></li>
-</ul></div>
 <div class="nz-body"><div class="w">
 <h3 class="nz-h">Qué podés resolver con nosotros</h3>
 <ul class="nz-tiles">
@@ -2379,9 +2379,11 @@ html body .dr-v71 .dr-addr .btn{flex:1 1 auto}
 <li class="nz-tile"><span class="nz-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h13l-3.5-3.5M19 15H6l3.5 3.5"/></svg></span><h4>Tu usado cuenta</h4><p>Tomamos permutas. Armá el mensaje con los datos de tu usado y enviáselo a DR Automóviles.</p><a href="#tu-usado">Armar mi consulta</a></li>
 <li class="nz-tile"><span class="nz-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.8 7.4 7 9 4.2-1.6 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><h4>Consignaciones</h4><p>Podés dejar tu vehículo en consignación. Las condiciones se coordinan con DR Automóviles.</p><a href="#contacto">Consultar</a></li>
 </ul>
-<div class="nz-net"><h3 class="nz-h">Dónde encontrarnos</h3><p class="nz-net-p">Esta es la dirección de DR Automóviles.</p>
-<ul><li class="is-here"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>DR Automóviles</b><span>Don Segundo Sombra 1130, Paso del Rey, Buenos Aires</span></div></li></ul></div>
 </div></div>
+<div class="nz-net nz-net--mapa" id="donde"><div class="w"><h3 class="nz-h">Dónde encontrarnos</h3><p class="nz-net-p">Esta es la dirección de DR Automóviles.</p>
+<ul><li class="is-here"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>DR Automóviles</b><span>Don Segundo Sombra 1130, Paso del Rey, Buenos Aires</span></div></li></ul>
+<p class="nz-net-acc"><a class="btn p sm" href="https://www.google.com/maps/place/DR+Automoviles/@-34.6496742,-58.7776261,17z/data=!3m1!4b1!4m6!3m5!1s0x95bc95995d4bfff7:0x14eab2a5f04f0259!8m2!3d-34.6496742!4d-58.7750512!16s%2Fg%2F11q2qv7vtt" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a></p></div>
+<div class="nz-mapa"><iframe src="https://maps.google.com/maps?q=-34.6496742,-58.7750512&hl=es&z=17&output=embed" title="Mapa con la ubicación de DR Automóviles" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div>
 </section>
 
 <section id="contacto" class="ct dr-ct" aria-labelledby="contacto-t"><div class="w">
@@ -2389,14 +2391,14 @@ html body .dr-v71 .dr-addr .btn{flex:1 1 auto}
 <div class="dr-ct-grid">
 <ul class="dr-ch"><li><a class="dr-chn dr-chn--p" href="https://wa.me/5491167425978?text=Hola!%20Quiero%20consultar%20por%20las%20unidades%20disponibles." target="_blank" rel="noopener noreferrer"><span class="dr-chn-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z"/></svg></span><span class="dr-chn-t"><span class="dr-chn-k">WhatsApp</span><span class="dr-chn-v">11 6742-5978</span><span class="dr-chn-s">Escribinos y te respondemos</span></span></a></li><li><a class="dr-chn" href="tel:+541167425978"><span class="dr-chn-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span class="dr-chn-t"><span class="dr-chn-k">Teléfono</span><span class="dr-chn-v">011 6742-5978</span><span class="dr-chn-s">Llamanos en horario de atención</span></span></a></li><li><a class="dr-chn" href="#horarios"><span class="dr-chn-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="dr-chn-t"><span class="dr-chn-k">Visitanos</span><span class="dr-chn-v">Don Segundo Sombra 1130</span><span class="dr-chn-s">Paso del Rey · ver horarios y mapa</span></span></a></li></ul>
 <aside class="dr-ct-side" aria-label="Consultar y redes"><p class="dr-ct-t">¿Buscás un auto?</p><p>Contanos qué estás buscando y te ayudamos a encontrarlo.</p><div class="row"><a class="btn p" href="https://wa.me/5491167425978?text=Hola!%20Quiero%20consultar%20por%20las%20unidades%20disponibles." target="_blank" rel="noopener noreferrer">Consultar con un asesor</a><a class="btn" href="reserva.html">Agendar visita</a></div>
-<div class="dr-soc"><p class="dr-k">En la web</p><ul><li><a href="https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/" target="_blank" rel="noopener noreferrer">Facebook</a></li><li><a href="https://www.instagram.com/dr.automoviles/" target="_blank" rel="noopener noreferrer">Instagram @dr.automoviles</a></li><li><a href="https://www.google.com/maps/place/DR+Automoviles/@-34.6496742,-58.7776261,17z/data=!4m8!3m7!1s0x95bc95995d4bfff7:0x14eab2a5f04f0259!8m2!3d-34.6496742!4d-58.7750512!9m1!1b1!16s%2Fg%2F11q2qv7vtt" target="_blank" rel="noopener noreferrer">Ficha de Google</a></li><li><a href="https://www.tiktok.com/@dr.automoviles" target="_blank" rel="noopener noreferrer">TikTok @dr.automoviles</a></li><li><a href="https://www.youtube.com/@drautomoviles8734/playlists" target="_blank" rel="noopener noreferrer">YouTube</a></li></ul></div></aside>
+<div class="dr-soc"><p class="dr-k">En la web</p><ul><li><a href="https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/" target="_blank" rel="noopener noreferrer">Facebook</a></li><li><a href="https://www.instagram.com/dr.automoviles/" target="_blank" rel="noopener noreferrer">Instagram @dr.automoviles</a></li><li><a href="https://www.google.com/maps/place/DR+Automoviles/@-34.6496742,-58.7776261,17z/data=!4m8!3m7!1s0x95bc95995d4bfff7:0x14eab2a5f04f0259!8m2!3d-34.6496742!4d-58.7750512!9m1!1b1!16s%2Fg%2F11q2qv7vtt" target="_blank" rel="noopener noreferrer">Ficha de Google</a></li><li><a href="https://www.tiktok.com/@dr.automoviles" target="_blank" rel="noopener noreferrer">TikTok @dr.automoviles</a></li></ul></div></aside>
 </div>
 </div></section>
 </main>
 <footer><div class="w">
 <div class="ft"><div class="ft-m"><img class="lg-ft" src="images/logo-sm.png" width="256" height="256" alt=""><p class="ft-b">DR Automóviles</p><p>Don Segundo Sombra 1130, Paso del Rey, Buenos Aires</p></div>
 <div><p class="ft-k">Contacto</p><p><a href="tel:+541167425978">011 6742-5978</a></p><p><a href="https://wa.me/5491167425978?text=Hola!%20Quiero%20consultar%20por%20las%20unidades%20disponibles." target="_blank" rel="noopener noreferrer">WhatsApp 11 6742-5978</a></p></div>
-<div><p class="ft-k">Redes</p><p><a href="https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/" target="_blank" rel="noopener noreferrer">Facebook</a></p><p><a href="https://www.instagram.com/dr.automoviles/" target="_blank" rel="noopener noreferrer">Instagram</a></p><p><a href="https://www.tiktok.com/@dr.automoviles" target="_blank" rel="noopener noreferrer">TikTok</a></p><p><a href="https://www.youtube.com/@drautomoviles8734/playlists" target="_blank" rel="noopener noreferrer">YouTube</a></p></div></div>
+<div><p class="ft-k">Redes</p><p><a href="https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/" target="_blank" rel="noopener noreferrer">Facebook</a></p><p><a href="https://www.instagram.com/dr.automoviles/" target="_blank" rel="noopener noreferrer">Instagram</a></p><p><a href="https://www.tiktok.com/@dr.automoviles" target="_blank" rel="noopener noreferrer">TikTok</a></p></div></div>
 <p class="ft-c">© 2026 DR Automóviles</p><p class="demo-note" data-demo-note>Demo ilustrativa construida a partir de información pública. Datos y disponibilidad sujetos a confirmación por DR Automóviles. No es el sitio oficial. Datos pendientes de confirmación.</p><p>Fuentes: <a href="https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/" target="_blank" rel="noopener noreferrer">Facebook</a> · <a href="https://www.instagram.com/dr.automoviles/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://www.tiktok.com/@dr.automoviles" target="_blank" rel="noopener noreferrer">TikTok</a> · <a href="https://www.google.com/maps/place/DR+Automoviles/@-34.6496742,-58.7776261,17z/data=!4m8!3m7!1s0x95bc95995d4bfff7:0x14eab2a5f04f0259!8m2!3d-34.6496742!4d-58.7750512!9m1!1b1!16s%2Fg%2F11q2qv7vtt" target="_blank" rel="noopener noreferrer">Ficha de Google</a></p><p><a href="privacidad.html">Privacidad y avisos</a></p></div></footer>
 <nav class="cta-bar" aria-label="Acciones rápidas"><a href="https://wa.me/5491167425978?text=Hola!%20Quiero%20consultar%20por%20las%20unidades%20disponibles." target="_blank" rel="noopener noreferrer">Consultar</a><a href="reserva.html">Agendar visita</a></nav>
 

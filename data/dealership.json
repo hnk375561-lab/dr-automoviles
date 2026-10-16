@@ -12,7 +12,7 @@
     "cuit": null,
     "variantesDeNombre": [
       "DR AUTOMÓVILES (biografía de Instagram)",
-      "DR Automoviles (sin tilde: perfil de TikTok, canal de YouTube y directorios)",
+      "DR Automoviles (sin tilde: perfil de TikTok y directorios)",
       "Drautomoviles Paso del Rey (nombre de la página de Facebook)"
     ],
     "noVerificado": [
@@ -66,7 +66,7 @@
     "facebook": "https://www.facebook.com/p/Drautomoviles-Paso-del-Rey-61557472242641/",
     "instagram": "dr.automoviles",
     "tiktok": "https://www.tiktok.com/@dr.automoviles",
-    "youtube": "https://www.youtube.com/@drautomoviles8734/playlists",
+    "youtubeDescartado": "Canal @drautomoviles8734: no es el de la marca (indicación del responsable, 16/10/2026). No se publica.",
     "phone": "011 6742-5978",
     "phoneTel": "+541167425978",
     "whatsApp": "5491167425978",
@@ -254,6 +254,6 @@
   },
   "website": {
     "propio": null,
-    "nota": "El canal de YouTube enlaza a drautomoviles.com, pero ese dominio, drautomoviles.com.ar y sus variantes con www no resolvieron DNS el 15/10/2026. Preguntar al dueño si conserva el dominio antes de registrar otro."
+    "nota": "drautomoviles.com, drautomoviles.com.ar y sus variantes con www no resolvieron DNS el 15/10/2026 (dominio tomado del canal de YouTube, descartado por no ser de la marca). Preguntar al dueño si tiene dominio propio."
   }
 }

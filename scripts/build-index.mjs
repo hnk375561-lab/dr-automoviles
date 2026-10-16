@@ -406,11 +406,6 @@ const secNosotros = `
 </div>
 <div class="nz-big"><span class="nz-flag" aria-hidden="true"></span><p class="nz-num">18</p><p class="nz-num-l">años de trayectoria</p><p class="nz-num-s">según su propia biografía de Instagram</p></div>
 </div></div>
-<div class="nz-stats"><ul>
-${RV && RV.publicadas ? `<li><b>${esc(String(RV.puntaje).replace('.', ','))}</b><span>de ${RV.escala} en Google, sobre ${RV.cantidad} opiniones (consultado el ${esc(fdate(RV.fecha))})</span></li>` : ''}
-${nDias ? `<li><b>${nDias}</b><span>días de atención por semana${H.domingo ? '; domingo cerrado' : ''}</span></li>` : ''}
-<li><b>${D.services.published.filter((x) => x.clave !== 'financiacion').length}</b><span>servicios: compra y venta, permutas y consignaciones, y financiación a consultar</span></li>
-</ul></div>
 <div class="nz-body"><div class="w">
 <h3 class="nz-h">Qué podés resolver con nosotros</h3>
 <ul class="nz-tiles">
@@ -419,9 +414,11 @@ ${hasSvc('financiacion') ? `<li class="nz-tile"><span class="nz-ic">${ICN.coin}<
 ${hasSvc('permuta') ? `<li class="nz-tile"><span class="nz-ic">${ICN.swap}</span><h4>Tu usado cuenta</h4><p>Tomamos permutas. Armá el mensaje con los datos de tu usado y enviáselo a ${esc(NAME)}.</p><a href="#tu-usado">Armar mi consulta</a></li>` : ''}
 ${hasSvc('consignacion') ? `<li class="nz-tile"><span class="nz-ic">${ICN.shield}</span><h4>Consignaciones</h4><p>Podés dejar tu vehículo en consignación. Las condiciones se coordinan con ${esc(NAME)}.</p><a href="#contacto">Consultar</a></li>` : ''}
 </ul>
-<div class="nz-net"><h3 class="nz-h">Dónde encontrarnos</h3><p class="nz-net-p">Esta es la dirección de ${esc(NAME)}.</p>
-<ul><li class="is-here">${ICX.pin}<div><b>${esc(NAME)}</b><span>${esc(DIR_COMPLETA)}</span></div></li></ul></div>
 </div></div>
+<div class="nz-net nz-net--mapa" id="donde"><div class="w"><h3 class="nz-h">Dónde encontrarnos</h3><p class="nz-net-p">Esta es la dirección de ${esc(NAME)}.</p>
+<ul><li class="is-here">${ICX.pin}<div><b>${esc(NAME)}</b><span>${esc(DIR_COMPLETA)}</span></div></li></ul>
+${L.mapsUrl ? `<p class="nz-net-acc"><a class="btn p sm" href="${L.mapsUrl}" ${EXT}>Abrir en Google Maps</a></p>` : ''}</div>
+${COORD ? `<div class="nz-mapa"><iframe src="https://maps.google.com/maps?q=${COORD.lat},${COORD.lng}&hl=es&z=17&output=embed" title="Mapa con la ubicación de ${esc(NAME)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>` : ''}</div>
 </section>`;
 
 const ld = {
@@ -496,7 +493,7 @@ const privacidad = page({
 <main id="top"><section><div class="w doc">
 <p class="ey">Avisos</p><h1>Privacidad y <em>avisos</em></h1>
 <h2>Datos personales</h2>
-<p>Este sitio no tiene cuentas ni cookies propias y no guarda datos de quienes lo visitan. Los formularios «Tu usado» y «Contanos qué auto buscás» solo arman un mensaje en tu navegador, que podés copiar y enviar vos: no se transmite nada a este sitio. El mapa de «Horarios y ubicación» se carga solo si lo pedís y trae mosaicos de OpenStreetMap, que reciben tu dirección IP como cualquier sitio que se visita. Los botones de contacto abren Facebook, Instagram, TikTok, YouTube${C.whatsApp ? ', WhatsApp' : ''} o Google Maps, que tienen sus propias políticas de privacidad.</p>
+<p>Este sitio no tiene cuentas ni cookies propias y no guarda datos de quienes lo visitan. Los formularios «Tu usado» y «Contanos qué auto buscás» solo arman un mensaje en tu navegador, que podés copiar y enviar vos: no se transmite nada a este sitio. El mapa de «Horarios y ubicación» se carga solo si lo pedís y trae mosaicos de OpenStreetMap; el mapa de «Dónde encontrarnos» lo provee Google Maps y se carga al llegar a esa sección. Ambos reciben tu dirección IP como cualquier sitio que se visita. Los botones de contacto abren Facebook, Instagram, TikTok${C.whatsApp ? ', WhatsApp' : ''} o Google Maps, que tienen sus propias políticas de privacidad.</p>
 <h2>Información de las unidades</h2>
 <p>Los datos de las unidades (año, kilometraje, precio, disponibilidad) provienen de las publicaciones de ${esc(NAME)} en sus redes, y pueden haber cambiado. Confirmá siempre con ${esc(NAME)} antes de decidir.</p>
 <h2>Documento preliminar</h2>
