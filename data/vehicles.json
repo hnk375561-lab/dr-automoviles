@@ -1,5 +1,18 @@
 {
-  "fuente": "Sin unidades cargadas: el responsable del proyecto carga publicaciones y multimedia (15/10/2026).",
-  "relevadoEl": null,
-  "autos": []
+  "fuente": "Material fotográfico suministrado por el responsable del proyecto (16/10/2026). Precio, kilometraje, versión y disponibilidad: consultar antes de visitar.",
+  "relevadoEl": "2026-10-16",
+  "autos": [
+    {"id":"unidad-01","titulo":"Volkswagen Saveiro","marca":"Volkswagen","modelo":"Saveiro","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-01.webp","alt":"Volkswagen Saveiro publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-02","titulo":"Toyota Hilux","marca":"Toyota","modelo":"Hilux","url":"https://www.instagram.com/dr.automoviles/reel/Deh_mGMO438/","fotos":[{"src":"images/stock/unidad-02.webp","alt":"Toyota Hilux publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-03","titulo":"Fiat Fiorino","marca":"Fiat","modelo":"Fiorino","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-03.webp","alt":"Fiat Fiorino publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-04","titulo":"Ford Ka","marca":"Ford","modelo":"Ka","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-04.webp","alt":"Ford Ka publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-05","titulo":"Renault Kangoo","marca":"Renault","modelo":"Kangoo","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-05.webp","alt":"Renault Kangoo publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-06","titulo":"Fiat Palio","marca":"Fiat","modelo":"Palio","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-06.webp","alt":"Fiat Palio publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-07","titulo":"Ford Fiesta","marca":"Ford","modelo":"Fiesta","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-07.webp","alt":"Ford Fiesta publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-08","titulo":"Renault Duster","marca":"Renault","modelo":"Duster","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-08.webp","alt":"Renault Duster publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-09","titulo":"Ford Ranger","marca":"Ford","modelo":"Ranger","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-09.webp","alt":"Ford Ranger publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-10","titulo":"Fiat Fiorino","marca":"Fiat","modelo":"Fiorino","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-10.webp","alt":"Fiat Fiorino publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-11","titulo":"Chevrolet Onix","marca":"Chevrolet","modelo":"Onix","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-11.webp","alt":"Chevrolet Onix publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."},
+    {"id":"unidad-12","titulo":"Peugeot 208","marca":"Peugeot","modelo":"208","url":"https://www.instagram.com/dr.automoviles/","fotos":[{"src":"images/stock/unidad-12.webp","alt":"Peugeot 208 publicado por DR Automóviles","width":1440,"height":1440}],"nota":"Versión, año, kilometraje y precio: consultar por WhatsApp."}
+  ]
 }
