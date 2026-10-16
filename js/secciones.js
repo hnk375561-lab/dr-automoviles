@@ -643,7 +643,7 @@
 
       /* datos */
       var info = el('div', null, 'fi-i');
-      info.appendChild(el('p', a.marca, 'fi-b'));
+      var mb = el('p', a.marca, 'fi-b'); if (a.vendida) mb.appendChild(el('span', 'Vendida', 'fi-v')); info.appendChild(mb);
       var h = el('h2', a.modeloTxt); h.id = 'fi-ttl'; info.appendChild(h);
       info.appendChild(el('p', a.precio ? peso(a) : 'Consultar precio', 'fi-pr'));
       if (a.precio && a.precio.fecha) info.appendChild(el('p', 'Precio publicado el ' + fecha(a.precio.fecha) + '; puede haber cambiado.', 'fi-n'));
@@ -663,7 +663,7 @@
 
       /* acciones */
       var ac = el('div', null, 'fi-ac');
-      ac.appendChild(enlace(ctx.wa ? 'Consultar por WhatsApp' : 'Consultar por Facebook', a.href, 'btn p sm', true));
+      ac.appendChild(enlace(a.vendida ? 'Consultar por similares' : ctx.wa ? 'Consultar por WhatsApp' : 'Consultar por Facebook', a.href, 'btn p sm', true));
       ac.appendChild(enlace('Agendar visita y prueba de manejo', 'reserva.html', 'btn sm', false));
       info.appendChild(ac);
       var ac2 = el('div', null, 'fi-ac2');
